@@ -1,0 +1,1069 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Como extrair e filtrar poligonais do SIGEF e SICAR usando um Raio de Busca | PA GeoTec</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../css/variaveis.css" />
+  <link rel="stylesheet" href="../css/global.css" />
+  <link rel="stylesheet" href="../css/blog-post.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-container">
+      <div class="brand">
+        <a href="../index.html" class="brand-logo-link">
+          <img
+            src="../imagens/logo_marca/logo_normal-fundo_transparente.png"
+            alt="PA GeoTec"
+            class="brand-logo"
+          >
+        </a>
+      </div>
+
+      <nav class="main-nav">
+        <a href="../index.html" class="nav-link">Início</a>
+        <a href="../blog.html" class="nav-link active">Blog</a>
+        <a href="../index.html#portfolio" class="nav-link">Portfólio</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="article-page">
+    <div class="article-shell">
+      <article class="article-frame">
+        <section class="article-hero">
+          <div class="article-hero-left">
+            <h1 class="article-title">
+              Como extrair e filtrar poligonais do SIGEF e SICAR usando um Raio de Busca
+            </h1>
+
+            <div class="article-tags">
+              <span class="article-tag">QGIS</span>
+              <span class="article-tag">SIGEF</span>
+              <span class="article-tag">SICAR</span>
+              <span class="article-tag">Model Designer</span>
+            </div>
+          </div>
+        </section>
+
+        <div class="article-main-grid">
+          <aside class="article-sidebar" aria-label="Navegação lateral do artigo">
+            <div class="article-sidebar-inner">
+              <div class="article-sidebar-label">Sumário</div>
+              <nav class="article-sidebar-nav" id="article-sidebar-nav"></nav>
+            </div>
+          </aside>
+
+          <section class="article-body">
+
+            <div class="article-summary">
+              <p>
+                Neste tutorial, vamos montar um fluxo simples no QGIS para filtrar apenas as poligonais do SIGEF e do SICAR que estejam dentro de uma área de interesse definida a partir de um ponto e de um raio de busca. A proposta é automatizar esse processo com o Model Designer, permitindo repetir a análise de forma mais rápida sempre que você precisar.
+              </p>
+            </div>
+
+            <section class="article-block" data-article-section>
+              <h2 class="article-block-title">Contexto inicial</h2>
+
+              <div class="article-image-grid">
+                <figure class="article-image-card article-image-card-hero">
+                  <figcaption class="article-image-caption article-image-caption-highlight">
+                    Situação inicial: arquivos com muitas poligonais e necessidade de visualizar apenas a área de interesse.
+                  </figcaption>
+
+                  <div class="article-image-frame">
+                    <img
+                      class="article-image-custom-size"
+                      src="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa00-01-problema.png"
+                      alt="Situação inicial com muitas poligonais"
+                      style="width: 927px; height: 561px;"
+                    >
+                  </div>
+                </figure>
+
+                <figure class="article-image-card article-image-card-hero">
+                  <figcaption class="article-image-caption article-image-caption-highlight">
+                    Resultado esperado: arquivo contendo somente as poligonais filtradas pela área de estudo.
+                  </figcaption>
+
+                  <div class="article-image-frame">
+                    <img
+                      class="article-image-custom-size"
+                      src="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa00-02-solucao.png"
+                      alt="Resultado esperado com poligonais filtradas"
+                      style="width: 927px; height: 561px;"
+                    >
+                  </div>
+                </figure>
+              </div>
+            </section>
+
+            <div class="article-separator"></div>
+
+            <section class="article-block" data-article-section>
+              <h2 class="article-block-title">Material Disponibilizado</h2>
+
+              <div class="article-text">
+                <p>Os arquivos usados e gerados neste tutorial foram organizados em pastas para facilitar a consulta.</p>
+
+                <p>Na pasta <strong>01-Material para exercício</strong>, estão os arquivos de entrada utilizados no processo:</p>
+
+                <ul>
+                  <li>O ponto de entrada;</li>
+                  <li>O arquivo com as poligonais do SIGEF;</li>
+                  <li>O arquivo com as poligonais do SICAR.</li>
+                </ul>
+
+                <p>Neste material, os arquivos do SIGEF e do SICAR correspondem ao estado do Ceará.</p>
+
+                <p>Na pasta <strong>02-Resultado Final</strong>, estão os arquivos gerados ao final do exercício, incluindo:</p>
+
+                <ul>
+                  <li>O arquivo final com as poligonais do SIGEF e SICAR filtrados;</li>
+                  <li>As poligonais do SIGEF filtradas;</li>
+                  <li>As poligonais do SICAR filtradas.</li>
+                </ul>
+              </div>
+
+              <div class="article-image-grid">
+                <figure class="article-image-card article-image-card-hero">
+                  <div class="article-image-frame">
+                    <img
+                      class="article-image-custom-size"
+                      src="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa00-03-pastas.png"
+                      alt="Estrutura das pastas do exercício"
+                      style="width: 468px; height: 234px;"
+                    >
+                  </div>
+                  <figcaption class="article-image-caption">
+                    Estrutura das pastas e materiais disponibilizados para acompanhar o exercício.
+                  </figcaption>
+                </figure>
+              </div>
+
+              <div class="article-project-block">
+                <h4>Arquivos do Projeto</h4>
+                <a
+                  class="article-project-link"
+                  href="https://drive.google.com/drive/folders/1wXtG_tRdlxh9-T138QKgNW5tuYkl_alA?usp=sharing"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Abrir pasta do projeto no Google Drive
+                </a>
+              </div>
+            </section>
+
+            <div class="article-separator"></div>
+
+            <section class="article-block" data-article-section>
+              <h2 class="article-block-title">01-Criar o marcador de estudo</h2>
+
+              <div class="article-text">
+                <p>Antes de abrir o QGIS, é interessante criar um marcador/ponto no Google Earth Pro. Esse ponto será usado como referência para testar se o modelo está funcionando corretamente.</p>
+                <p>Depois de definir o local da sua área de estudo, salve o marcador em KML ou KMZ e siga para a próxima etapa.</p>
+                <p><strong>Atenção:</strong> como os arquivos do SIGEF e do SICAR disponibilizados neste exercício são do Ceará, escolha um ponto localizado dentro do estado. Se preferir trabalhar com outra região, será necessário obter os arquivos correspondentes diretamente nas bases do SIGEF e do SICAR.</p>
+                <p>Se não quiser criar esse marcador manualmente, você pode usar o arquivo já disponibilizado junto com o material do tutorial.</p>
+              </div>
+
+              <div class="article-gallery" data-blog-gallery>
+                <div class="article-gallery-main">
+                  <button class="article-gallery-arrow article-gallery-arrow-prev" type="button" aria-label="Imagem anterior" data-gallery-prev>‹</button>
+                  <div class="article-gallery-counter" data-gallery-counter></div>
+                  <div class="article-gallery-frame">
+                    <img src="" alt="" data-gallery-main-image>
+                  </div>
+                  <p class="article-gallery-caption" data-gallery-caption></p>
+                  <button class="article-gallery-arrow article-gallery-arrow-next" type="button" aria-label="Próxima imagem" data-gallery-next>›</button>
+                </div>
+
+                <div class="article-gallery-thumbs">
+                  <button
+                    class="article-gallery-thumb active"
+                    type="button"
+                    data-gallery-thumb
+                    data-full="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa01-01-marcador_kmz.png"
+                    data-alt="Criação de marcador no Google Earth Pro"
+                    data-caption="Criação de um marcador no Google Earth Pro para definir o ponto de estudo."
+                  >
+                    <img
+                      src="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa01-01-marcador_kmz.png"
+                      alt="Miniatura marcador KMZ"
+                    >
+                  </button>
+
+                  <button
+                    class="article-gallery-thumb"
+                    type="button"
+                    data-gallery-thumb
+                    data-full="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa01-02-salvar_kmz.png"
+                    data-alt="Salvamento do marcador em KML ou KMZ"
+                    data-caption="Salvamento do marcador em KML ou KMZ."
+                  >
+                    <img
+                      src="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa01-02-salvar_kmz.png"
+                      alt="Miniatura salvar KMZ"
+                    >
+                  </button>
+                </div>
+              </div>
+            </section>
+
+            <div class="article-separator"></div>
+
+            <section class="article-block" data-article-section>
+              <h2 class="article-block-title">02-Criar o projeto no QGIS</h2>
+
+              <div class="article-text">
+                <p>Agora vamos abrir o QGIS e criar um novo projeto.</p>
+                <p>No canto superior esquerdo, clique em <strong>Projeto &gt; Novo</strong>. Em seguida, vá novamente em <strong>Projeto &gt; Salvar Como</strong> para definir o local onde esse projeto será armazenado no computador.</p>
+                <p>Esse passo é importante para manter o trabalho organizado desde o início.</p>
+              </div>
+
+              <div class="article-gallery" data-blog-gallery>
+                <div class="article-gallery-main">
+                  <button class="article-gallery-arrow article-gallery-arrow-prev" type="button" aria-label="Imagem anterior" data-gallery-prev>‹</button>
+                  <div class="article-gallery-counter" data-gallery-counter></div>
+                  <div class="article-gallery-frame">
+                    <img src="" alt="" data-gallery-main-image>
+                  </div>
+                  <p class="article-gallery-caption" data-gallery-caption></p>
+                  <button class="article-gallery-arrow article-gallery-arrow-next" type="button" aria-label="Próxima imagem" data-gallery-next>›</button>
+                </div>
+
+                <div class="article-gallery-thumbs">
+                  <button
+                    class="article-gallery-thumb active"
+                    type="button"
+                    data-gallery-thumb
+                    data-full="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa02-01-novo_projeto.png"
+                    data-alt="Criação de novo projeto no QGIS"
+                    data-caption="Criação de um novo projeto no QGIS."
+                  >
+                    <img
+                      src="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa02-01-novo_projeto.png"
+                      alt="Miniatura novo projeto"
+                    >
+                  </button>
+
+                  <button
+                    class="article-gallery-thumb"
+                    type="button"
+                    data-gallery-thumb
+                    data-full="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa02-02-salvar_projeto.png"
+                    data-alt="Salvamento do projeto"
+                    data-caption="Salvamento do projeto para definir a pasta de trabalho."
+                  >
+                    <img
+                      src="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa02-02-salvar_projeto.png"
+                      alt="Miniatura salvar projeto"
+                    >
+                  </button>
+                </div>
+              </div>
+            </section>
+
+            <div class="article-separator"></div>
+
+            <section class="article-block" data-article-section>
+              <h2 class="article-block-title">03-Ativar a Caixa de Ferramentas</h2>
+
+              <div class="article-text">
+                <p>A área do QGIS logo abaixo dos menus principais faz parte da interface de trabalho com barras e painéis.</p>
+                <p>Clique com o botão direito em uma área em branco dessa região. Será exibida uma lista com opções de Painéis e Barra de Ferramentas. Ative a opção <strong>Caixa de Ferramentas</strong>.</p>
+                <p>Esse painel será muito importante, porque é nele que encontraremos as ferramentas de processamento usadas no projeto e também no Model Designer.</p>
+              </div>
+
+              <div class="article-gallery" data-blog-gallery>
+                <div class="article-gallery-main">
+                  <button class="article-gallery-arrow article-gallery-arrow-prev" type="button" aria-label="Imagem anterior" data-gallery-prev>‹</button>
+                  <div class="article-gallery-counter" data-gallery-counter></div>
+                  <div class="article-gallery-frame">
+                    <img src="" alt="" data-gallery-main-image>
+                  </div>
+                  <p class="article-gallery-caption" data-gallery-caption></p>
+                  <button class="article-gallery-arrow article-gallery-arrow-next" type="button" aria-label="Próxima imagem" data-gallery-next>›</button>
+                </div>
+
+                <div class="article-gallery-thumbs">
+                  <button
+                    class="article-gallery-thumb active"
+                    type="button"
+                    data-gallery-thumb
+                    data-full="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa03-01-barra_ferramentas_destacado.png"
+                    data-alt="Área de painéis e barras do QGIS"
+                    data-caption="Localização da área da interface onde ficam os painéis e barras do QGIS."
+                  >
+                    <img
+                      src="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa03-01-barra_ferramentas_destacado.png"
+                      alt="Miniatura barra de ferramentas"
+                    >
+                  </button>
+
+                  <button
+                    class="article-gallery-thumb"
+                    type="button"
+                    data-gallery-thumb
+                    data-full="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa03-02-selecionar_caixa_ferramentas.png"
+                    data-alt="Ativando a Caixa de Ferramentas"
+                    data-caption="Ativando a opção Caixa de Ferramentas no menu de painéis."
+                  >
+                    <img
+                      src="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa03-02-selecionar_caixa_ferramentas.png"
+                      alt="Miniatura caixa de ferramentas"
+                    >
+                  </button>
+
+                  <button
+                    class="article-gallery-thumb"
+                    type="button"
+                    data-gallery-thumb
+                    data-full="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa03-03-caixa_ferramentas_destacado.png"
+                    data-alt="Caixa de Ferramentas em destaque"
+                    data-caption="Destaque para a Caixa de Ferramentas, que será usada ao longo do tutorial."
+                  >
+                    <img
+                      src="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa03-03-caixa_ferramentas_destacado.png"
+                      alt="Miniatura destaque caixa de ferramentas"
+                    >
+                  </button>
+                </div>
+              </div>
+            </section>
+
+            <div class="article-separator"></div>
+
+            <section class="article-block" data-article-section>
+              <h2 class="article-block-title">04-Abrir o Model Designer</h2>
+
+              <div class="article-text">
+                <p>Agora vamos abrir o Model Designer do QGIS, também conhecido como Modelador Gráfico.</p>
+                <p>Você pode fazer isso de três formas:</p>
+                <ul>
+                  <li>pelo menu superior do QGIS;</li>
+                  <li>pela Caixa de Ferramentas;</li>
+                  <li>usando o atalho Ctrl + Alt + G.</li>
+                </ul>
+                <p>Se abrir pela Caixa de Ferramentas, procure o ícone com engrenagens e clique em <strong>Criar novo modelo</strong>.</p>
+              </div>
+
+              <div class="article-gallery" data-blog-gallery>
+                <div class="article-gallery-main">
+                  <button class="article-gallery-arrow article-gallery-arrow-prev" type="button" aria-label="Imagem anterior" data-gallery-prev>‹</button>
+                  <div class="article-gallery-counter" data-gallery-counter></div>
+                  <div class="article-gallery-frame">
+                    <img src="" alt="" data-gallery-main-image>
+                  </div>
+                  <p class="article-gallery-caption" data-gallery-caption></p>
+                  <button class="article-gallery-arrow article-gallery-arrow-next" type="button" aria-label="Próxima imagem" data-gallery-next>›</button>
+                </div>
+
+                <div class="article-gallery-thumbs">
+                  <button
+                    class="article-gallery-thumb active"
+                    type="button"
+                    data-gallery-thumb
+                    data-full="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa04-01-model_designer_opcao1.png"
+                    data-alt="Abertura do Model Designer pelo menu"
+                    data-caption="Abertura do Model Designer pelo menu superior do QGIS."
+                  >
+                    <img
+                      src="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa04-01-model_designer_opcao1.png"
+                      alt="Miniatura model designer opção 1"
+                    >
+                  </button>
+
+                  <button
+                    class="article-gallery-thumb"
+                    type="button"
+                    data-gallery-thumb
+                    data-full="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa04-02-model_designer_opcao2.png"
+                    data-alt="Abertura do Model Designer pela Caixa de Ferramentas"
+                    data-caption="Abertura do Model Designer pela Caixa de Ferramentas."
+                  >
+                    <img
+                      src="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa04-02-model_designer_opcao2.png"
+                      alt="Miniatura model designer opção 2"
+                    >
+                  </button>
+                </div>
+              </div>
+            </section>
+
+            <div class="article-separator"></div>
+
+            <section class="article-block" data-article-section>
+              <h2 class="article-block-title">05-Entender a estrutura do Model Designer</h2>
+
+              <div class="article-text">
+                <p>No Model Designer, trabalhamos principalmente com dois elementos: <strong>Entradas</strong> e <strong>Algoritmos</strong>.</p>
+                <p>As Entradas são as informações que o modelo precisa receber para funcionar, como uma camada, um número ou um sistema de coordenadas.</p>
+                <p>Os Algoritmos são as ferramentas que processam essas informações. Em outras palavras, são as etapas que executam o trabalho dentro do modelo.</p>
+                <p>Antes de começar a montagem, defina o nome e o grupo do seu modelo na área de propriedades. Isso ajuda a manter tudo organizado, especialmente se você criar outros modelos relacionados ao mesmo tema no futuro.</p>
+                <p>Depois disso, já vale a pena fazer um primeiro salvamento do modelo.</p>
+              </div>
+
+              <div class="article-gallery" data-blog-gallery>
+                <div class="article-gallery-main">
+                  <button class="article-gallery-arrow article-gallery-arrow-prev" type="button" aria-label="Imagem anterior" data-gallery-prev>‹</button>
+                  <div class="article-gallery-counter" data-gallery-counter></div>
+                  <div class="article-gallery-frame">
+                    <img src="" alt="" data-gallery-main-image>
+                  </div>
+                  <p class="article-gallery-caption" data-gallery-caption></p>
+                  <button class="article-gallery-arrow article-gallery-arrow-next" type="button" aria-label="Próxima imagem" data-gallery-next>›</button>
+                </div>
+
+                <div class="article-gallery-thumbs">
+                  <button
+                    class="article-gallery-thumb active"
+                    type="button"
+                    data-gallery-thumb
+                    data-full="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa05-01-caixa_entrada_algoritmos.png"
+                    data-alt="Área de entradas e algoritmos"
+                    data-caption="Destaque para a área de Entradas e a área de Algoritmos no Model Designer."
+                  >
+                    <img
+                      src="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa05-01-caixa_entrada_algoritmos.png"
+                      alt="Miniatura entradas e algoritmos"
+                    >
+                  </button>
+
+                  <button
+                    class="article-gallery-thumb"
+                    type="button"
+                    data-gallery-thumb
+                    data-full="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa05-02-colocar_nome_grupo.png"
+                    data-alt="Definição de nome e grupo do modelo"
+                    data-caption="Preenchimento do nome do modelo e do grupo nas propriedades."
+                  >
+                    <img
+                      src="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa05-02-colocar_nome_grupo.png"
+                      alt="Miniatura nome e grupo"
+                    >
+                  </button>
+
+                  <button
+                    class="article-gallery-thumb"
+                    type="button"
+                    data-gallery-thumb
+                    data-full="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa05-03-salvar_modelo_projeto.png"
+                    data-alt="Salvamento inicial do modelo"
+                    data-caption="Salvamento inicial do modelo ainda no começo da montagem."
+                  >
+                    <img
+                      src="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa05-03-salvar_modelo_projeto.png"
+                      alt="Miniatura salvar modelo"
+                    >
+                  </button>
+                </div>
+              </div>
+            </section>
+
+            <div class="article-separator"></div>
+
+            <section class="article-block" data-article-section>
+              <h2 class="article-block-title">06-Configurar as entradas do modelo</h2>
+
+              <div class="article-text">
+                <p>Na Caixa de Entradas, procure pela opção <strong>Camada Vetorial</strong>. Essa será a entrada usada para informar o ponto de estudo. No exemplo, vamos chamá-la de <strong>Ponto de Entrada</strong>.</p>
+                <p>No campo de tipo de geometria, selecione <strong>Ponto</strong>, já que o modelo será baseado em um marcador de entrada a partir do qual será criado o raio de análise.</p>
+                <p>Em seguida, adicione também a entrada <strong>SRC</strong>. Ela será importante porque vamos trabalhar com distância em metros, então precisamos garantir que o ponto de entrada esteja em um sistema de coordenadas adequado para esse tipo de cálculo.</p>
+                <p>Ao final dessa etapa, o modelo deverá exibir dois cards amarelos: um para o <strong>Ponto de Entrada</strong> e outro para o <strong>SRC</strong>.</p>
+              </div>
+
+              <div class="article-gallery" data-blog-gallery>
+                <div class="article-gallery-main">
+                  <button class="article-gallery-arrow article-gallery-arrow-prev" type="button" aria-label="Imagem anterior" data-gallery-prev>‹</button>
+                  <div class="article-gallery-counter" data-gallery-counter></div>
+                  <div class="article-gallery-frame">
+                    <img src="" alt="" data-gallery-main-image>
+                  </div>
+                  <p class="article-gallery-caption" data-gallery-caption></p>
+                  <button class="article-gallery-arrow article-gallery-arrow-next" type="button" aria-label="Próxima imagem" data-gallery-next>›</button>
+                </div>
+
+                <div class="article-gallery-thumbs">
+                  <button class="article-gallery-thumb active" type="button" data-gallery-thumb data-full="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa06-01-entrada_camada_vetorial.png" data-alt="Busca pela entrada Camada Vetorial" data-caption="Busca pela entrada Camada Vetorial na lista de entradas do modelo.">
+                    <img src="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa06-01-entrada_camada_vetorial.png" alt="Miniatura etapa 06 imagem 1">
+                  </button>
+                  <button class="article-gallery-thumb" type="button" data-gallery-thumb data-full="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa06-02-camada_vetorial_descricao.png" data-alt="Definição do nome da entrada de camada vetorial" data-caption="Definição do nome da entrada de camada vetorial.">
+                    <img src="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa06-02-camada_vetorial_descricao.png" alt="Miniatura etapa 06 imagem 2">
+                  </button>
+                  <button class="article-gallery-thumb" type="button" data-gallery-thumb data-full="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa06-03-camada_vetorial_tipo.png" data-alt="Escolha do tipo de geometria como Ponto" data-caption="Escolha do tipo de geometria da entrada como Ponto.">
+                    <img src="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa06-03-camada_vetorial_tipo.png" alt="Miniatura etapa 06 imagem 3">
+                  </button>
+                  <button class="article-gallery-thumb" type="button" data-gallery-thumb data-full="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa06-04-entrada_src.png" data-alt="Busca pela entrada SRC" data-caption="Busca pela entrada SRC no painel de entradas.">
+                    <img src="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa06-04-entrada_src.png" alt="Miniatura etapa 06 imagem 4">
+                  </button>
+                  <button class="article-gallery-thumb" type="button" data-gallery-thumb data-full="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa06-05-src_descricao.png" data-alt="Definição do nome da entrada SRC" data-caption="Definição do nome da entrada de SRC.">
+                    <img src="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa06-05-src_descricao.png" alt="Miniatura etapa 06 imagem 5">
+                  </button>
+                  <button class="article-gallery-thumb" type="button" data-gallery-thumb data-full="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa06-06-src_resultado.png" data-alt="Resultado da criação das entradas" data-caption="Resultado da criação das entradas Ponto de Entrada e SRC no modelo.">
+                    <img src="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa06-06-src_resultado.png" alt="Miniatura etapa 06 imagem 6">
+                  </button>
+                </div>
+              </div>
+            </section>
+
+            <div class="article-separator"></div>
+
+            <section class="article-block" data-article-section>
+              <h2 class="article-block-title">07-Configurar o reprojetar camada</h2>
+
+              <div class="article-text">
+                <p>Na Caixa de Algoritmos, procure por <strong>Reprojetar Camada</strong>.</p>
+                <p>Ao abrir a janela do algoritmo, você pode preencher a descrição com um nome que facilite a identificação dessa etapa.</p>
+                <p>Em <strong>Camada de Entrada</strong>, selecione a entrada do modelo correspondente ao <strong>Ponto de Entrada</strong>.</p>
+                <p>Em <strong>SRC Destino</strong>, em vez de deixar um valor fixo, configure para usar a entrada do modelo. Assim, o sistema de coordenadas poderá ser definido no momento da execução, tornando o modelo mais flexível.</p>
+                <p>Quando concluir, o card do algoritmo <strong>Reprojetar Camada</strong> ficará conectado ao <strong>Ponto de Entrada</strong> e ao <strong>SRC Ponto de Entrada</strong>.</p>
+                <p>Se quiser, aproveite esse momento para organizar visualmente os cards na tela.</p>
+              </div>
+
+              <div class="article-gallery" data-blog-gallery>
+                <div class="article-gallery-main">
+                  <button class="article-gallery-arrow article-gallery-arrow-prev" type="button" aria-label="Imagem anterior" data-gallery-prev>‹</button>
+                  <div class="article-gallery-counter" data-gallery-counter></div>
+                  <div class="article-gallery-frame">
+                    <img src="" alt="" data-gallery-main-image>
+                  </div>
+                  <p class="article-gallery-caption" data-gallery-caption></p>
+                  <button class="article-gallery-arrow article-gallery-arrow-next" type="button" aria-label="Próxima imagem" data-gallery-next>›</button>
+                </div>
+
+                <div class="article-gallery-thumbs">
+                  <button class="article-gallery-thumb active" type="button" data-gallery-thumb data-full="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa07-01-algoritmo_reprojetar_camada.png" data-alt="Pesquisa pelo algoritmo Reprojetar Camada" data-caption="Pesquisa pelo algoritmo Reprojetar Camada na lista de algoritmos.">
+                    <img src="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa07-01-algoritmo_reprojetar_camada.png" alt="Miniatura etapa 07 imagem 1">
+                  </button>
+                  <button class="article-gallery-thumb" type="button" data-gallery-thumb data-full="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa07-02-camada_entrada_modelo.png" data-alt="Configuração da camada de entrada" data-caption="Configuração da camada de entrada usando o Ponto de Entrada do modelo.">
+                    <img src="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa07-02-camada_entrada_modelo.png" alt="Miniatura etapa 07 imagem 2">
+                  </button>
+                  <button class="article-gallery-thumb" type="button" data-gallery-thumb data-full="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa07-03-src_destino_entrada_modelo.png" data-alt="Ajuste do SRC Destino" data-caption="Ajuste do SRC Destino para usar uma entrada do modelo.">
+                    <img src="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa07-03-src_destino_entrada_modelo.png" alt="Miniatura etapa 07 imagem 3">
+                  </button>
+                  <button class="article-gallery-thumb" type="button" data-gallery-thumb data-full="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa07-04-src_destino_entrada_modelo_opcoes.png" data-alt="Seleção da entrada SRC Ponto de Entrada" data-caption="Seleção da entrada SRC Ponto de Entrada como referência de destino.">
+                    <img src="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa07-04-src_destino_entrada_modelo_opcoes.png" alt="Miniatura etapa 07 imagem 4">
+                  </button>
+                  <button class="article-gallery-thumb" type="button" data-gallery-thumb data-full="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa07-05-reprojetar_como_deve_ficar.png" data-alt="Configuração final do algoritmo Reprojetar Camada" data-caption="Configuração final do algoritmo Reprojetar Camada.">
+                    <img src="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa07-05-reprojetar_como_deve_ficar.png" alt="Miniatura etapa 07 imagem 5">
+                  </button>
+                  <button class="article-gallery-thumb" type="button" data-gallery-thumb data-full="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa07-06-resultado_esperado.png" data-alt="Visual do modelo após adicionar o algoritmo" data-caption="Visual do modelo após adicionar o algoritmo e conectar as entradas.">
+                    <img src="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa07-06-resultado_esperado.png" alt="Miniatura etapa 07 imagem 6">
+                  </button>
+                </div>
+              </div>
+            </section>
+
+            <div class="article-separator"></div>
+
+            <section class="article-block" data-article-section>
+              <h2 class="article-block-title">08-Criar a entrada do raio</h2>
+
+              <div class="article-text">
+                <p>Agora vamos criar a entrada responsável pelo valor do raio.</p>
+                <p>Na Caixa de Entradas, procure por <strong>Número</strong>. Essa entrada permitirá informar a distância do raio sempre que o modelo for executado.</p>
+                <p>No campo de descrição, use um nome claro, como <strong>Definir Valor do Raio</strong>. Em tipo de número, escolha <strong>Float</strong>, para permitir valores com casas decimais, se necessário.</p>
+                <p>Você também pode definir um valor padrão. Neste tutorial, vamos usar <strong>10000</strong>, que corresponde a 10.000 metros.</p>
+                <p>Depois de confirmar, aparecerá um novo card no modelo com a entrada do valor do raio.</p>
+              </div>
+
+              <div class="article-gallery" data-blog-gallery>
+                <div class="article-gallery-main">
+                  <button class="article-gallery-arrow article-gallery-arrow-prev" type="button" aria-label="Imagem anterior" data-gallery-prev>‹</button>
+                  <div class="article-gallery-counter" data-gallery-counter></div>
+                  <div class="article-gallery-frame">
+                    <img src="" alt="" data-gallery-main-image>
+                  </div>
+                  <p class="article-gallery-caption" data-gallery-caption></p>
+                  <button class="article-gallery-arrow article-gallery-arrow-next" type="button" aria-label="Próxima imagem" data-gallery-next>›</button>
+                </div>
+
+                <div class="article-gallery-thumbs">
+                  <button class="article-gallery-thumb active" type="button" data-gallery-thumb data-full="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa08-01-entrada_numero.png" data-alt="Busca pela entrada Número" data-caption="Busca pela entrada Número no painel de entradas.">
+                    <img src="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa08-01-entrada_numero.png" alt="Miniatura etapa 08 imagem 1">
+                  </button>
+                  <button class="article-gallery-thumb" type="button" data-gallery-thumb data-full="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa08-02-entrada_numero.png" data-alt="Definição do nome e valor padrão da entrada numérica" data-caption="Definição do nome da entrada numérica e, se desejar, de um valor padrão.">
+                    <img src="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa08-02-entrada_numero.png" alt="Miniatura etapa 08 imagem 2">
+                  </button>
+                  <button class="article-gallery-thumb" type="button" data-gallery-thumb data-full="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa08-03-entrada_numero_resultado.png" data-alt="Card criado para informar o valor do raio" data-caption="Card criado para informar o valor do raio de busca.">
+                    <img src="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa08-03-entrada_numero_resultado.png" alt="Miniatura etapa 08 imagem 3">
+                  </button>
+                </div>
+              </div>
+            </section>
+
+            <div class="article-separator"></div>
+
+            <section class="article-block" data-article-section>
+              <h2 class="article-block-title">09-Criar o buffer</h2>
+
+              <div class="article-text">
+                <p>Na Caixa de Algoritmos, procure pela ferramenta <strong>Buffer</strong>.</p>
+                <p>Na configuração, em <strong>Camada de Entrada</strong>, escolha <strong>Saída do Algoritmo</strong> e selecione a camada resultante de <strong>Reprojetar Camada</strong>. É ela que servirá como base para criar o raio de análise.</p>
+                <p>Em <strong>Distância</strong>, selecione <strong>Entrada do Modelo</strong> e escolha a entrada criada para definir o valor do raio.</p>
+                <p>Também é possível ajustar alguns detalhes da geometria do buffer. No QGIS, o círculo é representado por segmentos. Por isso, quanto maior o número de segmentos, mais suave ficará o contorno. Um valor como <strong>20</strong> costuma oferecer um bom resultado sem deixar o processamento desnecessariamente pesado.</p>
+                <p>Para manter um formato arredondado, deixe <strong>Estilo de Cobertura do Fim</strong> e <strong>Estilo da União</strong> como <strong>Arredondado</strong>.</p>
+                <p>Ao concluir, o card do Buffer aparecerá conectado à camada reprojetada e à entrada do valor do raio.</p>
+              </div>
+
+              <div class="article-gallery" data-blog-gallery>
+                <div class="article-gallery-main">
+                  <button class="article-gallery-arrow article-gallery-arrow-prev" type="button" aria-label="Imagem anterior" data-gallery-prev>‹</button>
+                  <div class="article-gallery-counter" data-gallery-counter></div>
+                  <div class="article-gallery-frame">
+                    <img src="" alt="" data-gallery-main-image>
+                  </div>
+                  <p class="article-gallery-caption" data-gallery-caption></p>
+                  <button class="article-gallery-arrow article-gallery-arrow-next" type="button" aria-label="Próxima imagem" data-gallery-next>›</button>
+                </div>
+
+                <div class="article-gallery-thumbs">
+                  <button class="article-gallery-thumb active" type="button" data-gallery-thumb data-full="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa09-01-algoritmo_buffer.png" data-alt="Pesquisa pela ferramenta Buffer" data-caption="Pesquisa pela ferramenta Buffer na lista de algoritmos.">
+                    <img src="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa09-01-algoritmo_buffer.png" alt="Miniatura etapa 09 imagem 1">
+                  </button>
+                  <button class="article-gallery-thumb" type="button" data-gallery-thumb data-full="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa09-02-buffer_camada_entrada.png" data-alt="Configuração da camada de entrada do Buffer" data-caption="Configuração da camada de entrada usando a saída do algoritmo anterior.">
+                    <img src="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa09-02-buffer_camada_entrada.png" alt="Miniatura etapa 09 imagem 2">
+                  </button>
+                  <button class="article-gallery-thumb" type="button" data-gallery-thumb data-full="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa09-03-buffer_distancia.png" data-alt="Definição da distância do Buffer" data-caption="Definição da distância do Buffer a partir da entrada numérica do modelo.">
+                    <img src="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa09-03-buffer_distancia.png" alt="Miniatura etapa 09 imagem 3">
+                  </button>
+                  <button class="article-gallery-thumb" type="button" data-gallery-thumb data-full="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa09-04-buffer_final.png" data-alt="Ajustes finais do Buffer" data-caption="Ajustes finais do Buffer, incluindo segmentos e estilo arredondado.">
+                    <img src="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa09-04-buffer_final.png" alt="Miniatura etapa 09 imagem 4">
+                  </button>
+                  <button class="article-gallery-thumb" type="button" data-gallery-thumb data-full="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa09-05-buffer_resultado.png" data-alt="Card do Buffer criado e conectado" data-caption="Card do Buffer criado e conectado às entradas necessárias.">
+                    <img src="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa09-05-buffer_resultado.png" alt="Miniatura etapa 09 imagem 5">
+                  </button>
+                </div>
+              </div>
+            </section>
+
+            <div class="article-separator"></div>
+
+            <section class="article-block" data-article-section>
+              <h2 class="article-block-title">10-Adicionar camadas para filtragem</h2>
+
+              <div class="article-text">
+                <p>Agora vamos adicionar as camadas que serão filtradas.</p>
+                <p>Novamente em <strong>Entradas</strong>, procure por <strong>Camada Vetorial</strong>. Desta vez, crie duas entradas com geometria do tipo <strong>Polígono</strong>:</p>
+                <ul>
+                  <li>uma para o <strong>SICAR</strong>;</li>
+                  <li>outra para o <strong>SIGEF</strong>.</li>
+                </ul>
+                <p>Ao final, o modelo deverá exibir dois novos cards amarelos, um para cada base.</p>
+                <p><strong>Observação:</strong> na janela de configuração da entrada existe a opção <strong>Obrigatório</strong>. Se ela estiver marcada, o modelo só será executado quando aquela camada for informada. Se você quiser deixar o uso de uma das camadas como opcional, basta desmarcar essa opção.</p>
+              </div>
+
+              <div class="article-gallery" data-blog-gallery>
+                <div class="article-gallery-main">
+                  <button class="article-gallery-arrow article-gallery-arrow-prev" type="button" aria-label="Imagem anterior" data-gallery-prev>‹</button>
+                  <div class="article-gallery-counter" data-gallery-counter></div>
+                  <div class="article-gallery-frame">
+                    <img src="" alt="" data-gallery-main-image>
+                  </div>
+                  <p class="article-gallery-caption" data-gallery-caption></p>
+                  <button class="article-gallery-arrow article-gallery-arrow-next" type="button" aria-label="Próxima imagem" data-gallery-next>›</button>
+                </div>
+
+                <div class="article-gallery-thumbs">
+                  <button class="article-gallery-thumb active" type="button" data-gallery-thumb data-full="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa10-01-camada_vetorial.png" data-alt="Busca pela entrada Camada Vetorial" data-caption="Busca pela entrada Camada Vetorial para adicionar novas camadas ao modelo.">
+                    <img src="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa10-01-camada_vetorial.png" alt="Miniatura etapa 10 imagem 1">
+                  </button>
+                  <button class="article-gallery-thumb" type="button" data-gallery-thumb data-full="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa10-02-camada_vetorial_sicar.png" data-alt="Configuração da camada SICAR" data-caption="Configuração da entrada da camada SICAR com geometria do tipo Polígono.">
+                    <img src="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa10-02-camada_vetorial_sicar.png" alt="Miniatura etapa 10 imagem 2">
+                  </button>
+                  <button class="article-gallery-thumb" type="button" data-gallery-thumb data-full="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa10-03-camada_vetorial_sigef.png" data-alt="Configuração da camada SIGEF" data-caption="Configuração da entrada da camada SIGEF com geometria do tipo Polígono.">
+                    <img src="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa10-03-camada_vetorial_sigef.png" alt="Miniatura etapa 10 imagem 3">
+                  </button>
+                  <button class="article-gallery-thumb" type="button" data-gallery-thumb data-full="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa10-04-resultado.png" data-alt="Resultado com os cards das entradas SIGEF e SICAR" data-caption="Resultado com os dois cards amarelos das entradas SIGEF e SICAR.">
+                    <img src="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa10-04-resultado.png" alt="Miniatura etapa 10 imagem 4">
+                  </button>
+                </div>
+              </div>
+            </section>
+
+            <div class="article-separator"></div>
+
+            <section class="article-block" data-article-section>
+              <h2 class="article-block-title">11-Extrair e filtrar poligonais</h2>
+
+              <div class="article-text">
+                <p>Na Caixa de Algoritmos, procure por <strong>Extrair por Localização</strong>. Vamos usar esse algoritmo duas vezes: uma para o SICAR e outra para o SIGEF.</p>
+                <p>Em <strong>Extrair Feições de</strong>, selecione a camada de entrada correspondente.</p>
+                <p>Na opção <strong>Onde as feições</strong> (predicado geométrico), o padrão costuma ser <strong>Interseccionam</strong>. Neste tutorial, é exatamente essa relação que queremos usar, pois ela retorna todas as poligonais que tenham contato com a área do buffer, seja total ou parcial.</p>
+                <p>Em <strong>Ao comparar com as feições do</strong>, selecione <strong>Saída do Algoritmo</strong> e escolha a camada gerada pelo Buffer.</p>
+                <p>Na saída final, dê um nome claro para cada resultado, como <strong>SICAR-Filtro</strong> e <strong>SIGEF-Filtro</strong>. Esses nomes serão importantes porque são eles que aparecerão no momento de salvar os arquivos ao executar o modelo.</p>
+                <p>Depois de configurar as duas extrações, o modelo deverá exibir dois cards do algoritmo e dois cards verdes, indicando as saídas finais.</p>
+                <p>Se necessário, organize os elementos na tela e salve o modelo.</p>
+              </div>
+
+              <div class="article-gallery" data-blog-gallery>
+                <div class="article-gallery-main">
+                  <button class="article-gallery-arrow article-gallery-arrow-prev" type="button" aria-label="Imagem anterior" data-gallery-prev>‹</button>
+                  <div class="article-gallery-counter" data-gallery-counter></div>
+                  <div class="article-gallery-frame">
+                    <img src="" alt="" data-gallery-main-image>
+                  </div>
+                  <p class="article-gallery-caption" data-gallery-caption></p>
+                  <button class="article-gallery-arrow article-gallery-arrow-next" type="button" aria-label="Próxima imagem" data-gallery-next>›</button>
+                </div>
+
+                <div class="article-gallery-thumbs">
+                  <button class="article-gallery-thumb active" type="button" data-gallery-thumb data-full="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa11-01-extrair_localizacao.png" data-alt="Pesquisa pelo algoritmo Extrair por Localização" data-caption="Pesquisa pelo algoritmo Extrair por Localização.">
+                    <img src="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa11-01-extrair_localizacao.png" alt="Miniatura etapa 11 imagem 1">
+                  </button>
+                  <button class="article-gallery-thumb" type="button" data-gallery-thumb data-full="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa11-02-definir_entrada.png" data-alt="Definição da camada que será filtrada" data-caption="Definição da camada que será filtrada no algoritmo.">
+                    <img src="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa11-02-definir_entrada.png" alt="Miniatura etapa 11 imagem 2">
+                  </button>
+                  <button class="article-gallery-thumb" type="button" data-gallery-thumb data-full="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa11-03-interseccionam.png" data-alt="Predicado geométrico Interseccionam" data-caption="Verificação do predicado geométrico configurado como Interseccionam.">
+                    <img src="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa11-03-interseccionam.png" alt="Miniatura etapa 11 imagem 3">
+                  </button>
+                  <button class="article-gallery-thumb" type="button" data-gallery-thumb data-full="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa11-04-outras_opcoes.png" data-alt="Outras relações espaciais disponíveis" data-caption="Visualização de outras relações espaciais disponíveis na ferramenta.">
+                    <img src="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa11-04-outras_opcoes.png" alt="Miniatura etapa 11 imagem 4">
+                  </button>
+                  <button class="article-gallery-thumb" type="button" data-gallery-thumb data-full="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa11-05-saida_modelo.png" data-alt="Configuração da comparação com a saída do modelo" data-caption="Configuração da comparação com a saída gerada no modelo.">
+                    <img src="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa11-05-saida_modelo.png" alt="Miniatura etapa 11 imagem 5">
+                  </button>
+                  <button class="article-gallery-thumb" type="button" data-gallery-thumb data-full="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa11-06-selecionar_buffer.png" data-alt="Seleção da camada gerada pelo Buffer" data-caption="Seleção da camada Bordeada gerada pelo algoritmo Buffer.">
+                    <img src="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa11-06-selecionar_buffer.png" alt="Miniatura etapa 11 imagem 6">
+                  </button>
+                  <button class="article-gallery-thumb" type="button" data-gallery-thumb data-full="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa11-07-digitar_sicar_filtro.png" data-alt="Definição do nome da saída SICAR-Filtro" data-caption="Definição do nome da saída para o resultado filtrado do SICAR.">
+                    <img src="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa11-07-digitar_sicar_filtro.png" alt="Miniatura etapa 11 imagem 7">
+                  </button>
+                  <button class="article-gallery-thumb" type="button" data-gallery-thumb data-full="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa11-08-digitar_sigef_filtro.png" data-alt="Definição do nome da saída SIGEF-Filtro" data-caption="Definição do nome da saída para o resultado filtrado do SIGEF.">
+                    <img src="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa11-08-digitar_sigef_filtro.png" alt="Miniatura etapa 11 imagem 8">
+                  </button>
+                  <button class="article-gallery-thumb" type="button" data-gallery-thumb data-full="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa11-09-resultado_esperado.png" data-alt="Resultado esperado com duas extrações e duas saídas" data-caption="Resultado esperado com dois algoritmos de extração e duas saídas finais.">
+                    <img src="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa11-09-resultado_esperado.png" alt="Miniatura etapa 11 imagem 9">
+                  </button>
+                  <button class="article-gallery-thumb" type="button" data-gallery-thumb data-full="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa11-10-organizar_salvar.png" data-alt="Organização visual dos cards e salvamento do modelo" data-caption="Organização visual dos cards e salvamento do modelo.">
+                    <img src="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa11-10-organizar_salvar.png" alt="Miniatura etapa 11 imagem 10">
+                  </button>
+                </div>
+              </div>
+            </section>
+
+            <div class="article-separator"></div>
+
+            <section class="article-block" data-article-section>
+              <h2 class="article-block-title">12-Salvar e testar o modelo</h2>
+
+              <div class="article-text">
+                <p>Com o modelo pronto, agora podemos carregar no QGIS as camadas que serão usadas no teste.</p>
+                <p>Adicione o arquivo KML/KMZ do ponto de estudo arrastando-o para dentro do QGIS. Depois, faça o mesmo com os arquivos do SIGEF e do SICAR.</p>
+                <p>Ao passar o mouse sobre as camadas, o QGIS mostra algumas informações importantes, como o tipo de geometria e o EPSG. No caso do exercício, o arquivo do SIGEF possui essa informação, mas o do SICAR pode aparecer sem SRC definido.</p>
+                <p>Quando isso acontece, é recomendável usar a ferramenta <strong>Reprojetar Camada</strong> para gerar um novo arquivo com o sistema de coordenadas corretamente definido.</p>
+                <p>Na hora de salvar, escolha o formato <strong>Shapefile (.shp)</strong>. Assim, você terá uma camada pronta para ser usada no modelo.</p>
+              </div>
+
+              <div class="article-gallery" data-blog-gallery>
+                <div class="article-gallery-main">
+                  <button class="article-gallery-arrow article-gallery-arrow-prev" type="button" aria-label="Imagem anterior" data-gallery-prev>‹</button>
+                  <div class="article-gallery-counter" data-gallery-counter></div>
+                  <div class="article-gallery-frame">
+                    <img src="" alt="" data-gallery-main-image>
+                  </div>
+                  <p class="article-gallery-caption" data-gallery-caption></p>
+                  <button class="article-gallery-arrow article-gallery-arrow-next" type="button" aria-label="Próxima imagem" data-gallery-next>›</button>
+                </div>
+
+                <div class="article-gallery-thumbs">
+                  <button class="article-gallery-thumb active" type="button" data-gallery-thumb data-full="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa12-01-abrindo_marcador.png" data-alt="Adicionando ao QGIS o arquivo KML ou KMZ" data-caption="Adicionando ao QGIS o arquivo KML/KMZ do ponto de estudo.">
+                    <img src="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa12-01-abrindo_marcador.png" alt="Miniatura etapa 12 imagem 1">
+                  </button>
+                  <button class="article-gallery-thumb" type="button" data-gallery-thumb data-full="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa12-02-verificar_projecao_sigef.png" data-alt="Verificação das informações da camada SIGEF" data-caption="Verificação das informações da camada do SIGEF, incluindo geometria e EPSG.">
+                    <img src="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa12-02-verificar_projecao_sigef.png" alt="Miniatura etapa 12 imagem 2">
+                  </button>
+                  <button class="article-gallery-thumb" type="button" data-gallery-thumb data-full="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa12-03-verificar_projecao_sicar.png" data-alt="Verificação da camada SICAR sem SRC definido" data-caption="Verificação da camada do SICAR, destacando a ausência de informação de EPSG.">
+                    <img src="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa12-03-verificar_projecao_sicar.png" alt="Miniatura etapa 12 imagem 3">
+                  </button>
+                  <button class="article-gallery-thumb" type="button" data-gallery-thumb data-full="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa12-04-reprojetar_camada.png" data-alt="Busca pela ferramenta Reprojetar Camada" data-caption="Busca pela ferramenta Reprojetar Camada na Caixa de Ferramentas.">
+                    <img src="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa12-04-reprojetar_camada.png" alt="Miniatura etapa 12 imagem 4">
+                  </button>
+                  <button class="article-gallery-thumb" type="button" data-gallery-thumb data-full="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa12-05-salvar_arquivo.png" data-alt="Definição do SRC de destino e opção de salvar" data-caption="Definição do SRC de destino e opção de salvar a nova camada.">
+                    <img src="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa12-05-salvar_arquivo.png" alt="Miniatura etapa 12 imagem 5">
+                  </button>
+                  <button class="article-gallery-thumb" type="button" data-gallery-thumb data-full="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa12-06-tipo_arquivo.png" data-alt="Escolha do local, nome e formato do arquivo reprojetado" data-caption="Escolha do local, nome e formato do arquivo reprojetado.">
+                    <img src="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa12-06-tipo_arquivo.png" alt="Miniatura etapa 12 imagem 6">
+                  </button>
+                  <button class="article-gallery-thumb" type="button" data-gallery-thumb data-full="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa12-07-camada_reprojetada.png" data-alt="Camada reprojetada adicionada ao projeto" data-caption="Camada reprojetada adicionada corretamente ao projeto.">
+                    <img src="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa12-07-camada_reprojetada.png" alt="Miniatura etapa 12 imagem 7">
+                  </button>
+                </div>
+              </div>
+            </section>
+
+            <div class="article-separator"></div>
+
+            <section class="article-block" data-article-section>
+              <h2 class="article-block-title">13-Executar o modelo</h2>
+
+              <div class="article-text">
+                <p>Com todas as camadas prontas, vá até a Caixa de Ferramentas e procure o modelo criado dentro de <strong>Modelos do Projeto</strong>.</p>
+                <p>Abra o modelo para executar. A janela exibirá os campos necessários para preencher:</p>
+                <ul>
+                  <li><strong>Definir Valor do Raio</strong>: distância do buffer;</li>
+                  <li><strong>Ponto de Entrada</strong>: marcador criado no Google Earth;</li>
+                  <li><strong>SICAR</strong>: arquivo com as poligonais do SICAR;</li>
+                  <li><strong>SIGEF</strong>: arquivo com as poligonais do SIGEF;</li>
+                  <li><strong>SRC Ponto de Entrada</strong>: sistema de coordenadas usado para o ponto;</li>
+                  <li><strong>SICAR-Filtro</strong> e <strong>SIGEF-Filtro</strong>: caminhos onde os arquivos finais serão salvos.</li>
+                </ul>
+                <p>Nos campos de saída, clique nos três pontos e escolha <strong>Salvar no arquivo</strong>. Defina o local e salve em <strong>Shapefile</strong>.</p>
+                <p>Se a opção <strong>Abrir arquivo de saída depois de executar o algoritmo</strong> estiver marcada, o QGIS carregará automaticamente os resultados ao final do processamento.</p>
+                <p>Depois de executar, o sistema irá gerar as camadas já filtradas de acordo com o raio definido.</p>
+              </div>
+
+              <div class="article-gallery" data-blog-gallery>
+                <div class="article-gallery-main">
+                  <button class="article-gallery-arrow article-gallery-arrow-prev" type="button" aria-label="Imagem anterior" data-gallery-prev>‹</button>
+                  <div class="article-gallery-counter" data-gallery-counter></div>
+                  <div class="article-gallery-frame">
+                    <img src="" alt="" data-gallery-main-image>
+                  </div>
+                  <p class="article-gallery-caption" data-gallery-caption></p>
+                  <button class="article-gallery-arrow article-gallery-arrow-next" type="button" aria-label="Próxima imagem" data-gallery-next>›</button>
+                </div>
+
+                <div class="article-gallery-thumbs">
+                  <button class="article-gallery-thumb active" type="button" data-gallery-thumb data-full="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa13-01-modelo_criado.png" data-alt="Acesso ao modelo salvo" data-caption="Acesso ao modelo salvo na seção Modelos do Projeto.">
+                    <img src="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa13-01-modelo_criado.png" alt="Miniatura etapa 13 imagem 1">
+                  </button>
+                  <button class="article-gallery-thumb" type="button" data-gallery-thumb data-full="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa13-02-executar.png" data-alt="Execução do modelo" data-caption="Execução do modelo pelo menu de contexto ou com duplo clique.">
+                    <img src="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa13-02-executar.png" alt="Miniatura etapa 13 imagem 2">
+                  </button>
+                  <button class="article-gallery-thumb" type="button" data-gallery-thumb data-full="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa13-03-tela_inicial.png" data-alt="Janela de execução com as entradas do modelo" data-caption="Janela de execução mostrando as entradas do modelo e os campos de saída.">
+                    <img src="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa13-03-tela_inicial.png" alt="Miniatura etapa 13 imagem 3">
+                  </button>
+                  <button class="article-gallery-thumb" type="button" data-gallery-thumb data-full="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa13-04-definir_camadas.png" data-alt="Preenchimento das camadas de entrada" data-caption="Preenchimento das camadas de entrada e do SRC do ponto.">
+                    <img src="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa13-04-definir_camadas.png" alt="Miniatura etapa 13 imagem 4">
+                  </button>
+                  <button class="article-gallery-thumb" type="button" data-gallery-thumb data-full="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa13-05-salvando_shapes.png" data-alt="Definição do caminho de saída para SICAR-Filtro" data-caption="Definição do caminho de saída para o arquivo SICAR-Filtro.">
+                    <img src="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa13-05-salvando_shapes.png" alt="Miniatura etapa 13 imagem 5">
+                  </button>
+                  <button class="article-gallery-thumb" type="button" data-gallery-thumb data-full="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa13-06-como_deve_ficar.png" data-alt="Configuração equivalente para SIGEF-Filtro" data-caption="Configuração equivalente para salvar o arquivo SIGEF-Filtro.">
+                    <img src="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa13-06-como_deve_fikar.png" alt="Miniatura etapa 13 imagem 6">
+                  </button>
+                  <button class="article-gallery-thumb" type="button" data-gallery-thumb data-full="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa13-07-arquivos_gerados.png" data-alt="Resultado final com os arquivos filtrados carregados" data-caption="Resultado final com os arquivos filtrados carregados corretamente no QGIS.">
+                    <img src="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa13-07-arquivos_gerados.png" alt="Miniatura etapa 13 imagem 7">
+                  </button>
+                </div>
+              </div>
+            </section>
+
+            <div class="article-separator"></div>
+
+            <section class="article-block" data-article-section>
+              <h2 class="article-block-title">14-Exportar para KML</h2>
+
+              <div class="article-text">
+                <p>Com os arquivos filtrados já gerados, agora vamos exportá-los para <strong>KML</strong>.</p>
+                <p>Clique com o botão direito sobre a camada e vá em <strong>Exportar &gt; Guardar Elementos Como</strong>.</p>
+                <p>Na janela de exportação:</p>
+                <ul>
+                  <li>em <strong>Formato</strong>, escolha <strong>KML</strong>;</li>
+                  <li>em <strong>Nome do Arquivo</strong>, defina o local e o nome do arquivo;</li>
+                  <li>em <strong>Nome da Camada</strong>, use apenas o nome da camada, sem o caminho da pasta.</li>
+                </ul>
+                <p>Se quiser que cada feição apareça com um identificador no Google Earth, configure o <strong>NameField</strong> com um campo de identificação apropriado.</p>
+                <p>Os campos marcados para exportação serão os mesmos exibidos quando você clicar na feição no Google Earth. Se quiser uma visualização mais limpa, exporte apenas os campos realmente importantes.</p>
+                <p>Também é recomendável desmarcar <strong>Metadados persistentes na camada</strong>, já que esse arquivo extra não será necessário para este fluxo.</p>
+                <p>Repita o processo para as camadas do SIGEF e do SICAR, ajustando o <strong>NameField</strong> conforme o campo de identificação de cada base.</p>
+              </div>
+
+              <div class="article-gallery" data-blog-gallery>
+                <div class="article-gallery-main">
+                  <button class="article-gallery-arrow article-gallery-arrow-prev" type="button" aria-label="Imagem anterior" data-gallery-prev>‹</button>
+                  <div class="article-gallery-counter" data-gallery-counter></div>
+                  <div class="article-gallery-frame">
+                    <img src="" alt="" data-gallery-main-image>
+                  </div>
+                  <p class="article-gallery-caption" data-gallery-caption></p>
+                  <button class="article-gallery-arrow article-gallery-arrow-next" type="button" aria-label="Próxima imagem" data-gallery-next>›</button>
+                </div>
+
+                <div class="article-gallery-thumbs">
+                  <button class="article-gallery-thumb active" type="button" data-gallery-thumb data-full="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa14-01-salvar_em_kml.png" data-alt="Acesso à opção Exportar para KML" data-caption="Acesso à opção Exportar > Guardar Elementos Como.">
+                    <img src="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa14-01-salvar_em_kml.png" alt="Miniatura etapa 14 imagem 1">
+                  </button>
+                  <button class="article-gallery-thumb" type="button" data-gallery-thumb data-full="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa14-02-salvar_configuracoes.png" data-alt="Definição do formato, caminho e nome do arquivo exportado" data-caption="Definição do formato, caminho e nome do arquivo exportado.">
+                    <img src="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa14-02-salvar_configuracoes.png" alt="Miniatura etapa 14 imagem 2">
+                  </button>
+                  <button class="article-gallery-thumb" type="button" data-gallery-thumb data-full="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa14-03-explicacao.png" data-alt="Exemplo de configuração do NameField" data-caption="Exemplo de configuração para exibir identificação e informações da feição no arquivo KML.">
+                    <img src="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa14-03-explicacao.png" alt="Miniatura etapa 14 imagem 3">
+                  </button>
+                  <button class="article-gallery-thumb" type="button" data-gallery-thumb data-full="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa14-04-salvar_sicar_kml.png" data-alt="Exportação da camada SICAR para KML" data-caption="Repetição do processo para exportar a camada do SICAR com o campo de nome adequado.">
+                    <img src="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa14-04-salvar_sicar_kml.png" alt="Miniatura etapa 14 imagem 4">
+                  </button>
+                </div>
+              </div>
+            </section>
+
+            <div class="article-separator"></div>
+
+            <section class="article-block" data-article-section>
+              <h2 class="article-block-title">15-Salvar o modelo para reutilização</h2>
+
+              <div class="article-text">
+                <p>Até aqui, o modelo está salvo dentro do projeto atual. Isso funciona bem, mas significa que ele ficará vinculado a esse arquivo <strong>.qgz</strong>.</p>
+                <p>Se você quiser reutilizar esse modelo em qualquer projeto do QGIS, vale a pena salvá-lo também na pasta de modelos do programa.</p>
+                <p>Para isso, na Caixa de Ferramentas, clique com o botão direito sobre o modelo e escolha <strong>Editar Modelo</strong>. Depois, no Model Designer, use a opção <strong>Salvar Modelo Como</strong>.</p>
+                <p>Salvando na pasta padrão do QGIS, o modelo passará a aparecer na seção <strong>Modelos</strong>, e não apenas em <strong>Modelos do Projeto</strong>.</p>
+                <p>Assim, você poderá usar o mesmo fluxo em projetos novos, antigos ou até em um projeto em branco.</p>
+              </div>
+
+              <div class="article-gallery" data-blog-gallery>
+                <div class="article-gallery-main">
+                  <button class="article-gallery-arrow article-gallery-arrow-prev" type="button" aria-label="Imagem anterior" data-gallery-prev>‹</button>
+                  <div class="article-gallery-counter" data-gallery-counter></div>
+                  <div class="article-gallery-frame">
+                    <img src="" alt="" data-gallery-main-image>
+                  </div>
+                  <p class="article-gallery-caption" data-gallery-caption></p>
+                  <button class="article-gallery-arrow article-gallery-arrow-next" type="button" aria-label="Próxima imagem" data-gallery-next>›</button>
+                </div>
+
+                <div class="article-gallery-thumbs">
+                  <button class="article-gallery-thumb active" type="button" data-gallery-thumb data-full="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa15-01-editar_modelo.png" data-alt="Acesso à opção Editar Modelo" data-caption="Acesso à opção Editar Modelo a partir da Caixa de Ferramentas.">
+                    <img src="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa15-01-editar_modelo.png" alt="Miniatura etapa 15 imagem 1">
+                  </button>
+                  <button class="article-gallery-thumb" type="button" data-gallery-thumb data-full="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa15-02-salvar_modelo.png" data-alt="Uso da opção Salvar Modelo Como" data-caption="Uso da opção Salvar Modelo Como para armazenar o modelo fora do projeto.">
+                    <img src="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa15-02-salvar_modelo.png" alt="Miniatura etapa 15 imagem 2">
+                  </button>
+                  <button class="article-gallery-thumb" type="button" data-gallery-thumb data-full="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa15-03-indicar_local.png" data-alt="Escolha da pasta padrão de modelos do QGIS" data-caption="Escolha da pasta padrão de modelos do QGIS.">
+                    <img src="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa15-03-indicar_local.png" alt="Miniatura etapa 15 imagem 3">
+                  </button>
+                  <button class="article-gallery-thumb" type="button" data-gallery-thumb data-full="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa15-04-modelo_salvo.png" data-alt="Modelo disponível em qualquer projeto" data-caption="Modelo disponível na seção Modelos em qualquer novo projeto do QGIS.">
+                    <img src="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa15-04-modelo_salvo.png" alt="Miniatura etapa 15 imagem 4">
+                  </button>
+                </div>
+              </div>
+            </section>
+
+            <div class="article-separator"></div>
+
+            <section class="article-block" data-article-section>
+              <h2 class="article-block-title">16-Visualizar no Google Earth</h2>
+
+              <div class="article-text">
+                <p>Agora vamos abrir os arquivos no Google Earth para conferir o resultado final.</p>
+                <p>Depois de localizar os arquivos salvos, abra-os normalmente. Se quiser melhorar a visualização, você pode ajustar o estilo das camadas.</p>
+                <p>Clique com o botão direito sobre a pasta ou camada, acesse <strong>Propriedades</strong> e vá até a aba <strong>Estilo/Cor</strong>. Em seguida, use a opção <strong>Compartilhar estilo</strong> para aplicar uma simbologia mais organizada.</p>
+                <p>Você pode definir cores diferentes para o SIGEF e para o SICAR, facilitando a leitura visual.</p>
+                <p>Na aba de altitude, também é possível fazer pequenos ajustes para melhorar a sobreposição entre as camadas. Em alguns casos, elevar levemente uma delas já ajuda a destacar melhor os limites.</p>
+                <p>Ao final, você terá um arquivo mais limpo, organizado e pronto para análise visual no Google Earth.</p>
+              </div>
+
+              <div class="article-gallery" data-blog-gallery>
+                <div class="article-gallery-main">
+                  <button class="article-gallery-arrow article-gallery-arrow-prev" type="button" aria-label="Imagem anterior" data-gallery-prev>‹</button>
+                  <div class="article-gallery-counter" data-gallery-counter></div>
+                  <div class="article-gallery-frame">
+                    <img src="" alt="" data-gallery-main-image>
+                  </div>
+                  <p class="article-gallery-caption" data-gallery-caption></p>
+                  <button class="article-gallery-arrow article-gallery-arrow-next" type="button" aria-label="Próxima imagem" data-gallery-next>›</button>
+                </div>
+
+                <div class="article-gallery-thumbs">
+                  <button class="article-gallery-thumb active" type="button" data-gallery-thumb data-full="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa16-01-abrir_kmls.png" data-alt="Localização dos arquivos KML salvos" data-caption="Localização dos arquivos KML salvos no computador.">
+                    <img src="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa16-01-abrir_kmls.png" alt="Miniatura etapa 16 imagem 1">
+                  </button>
+                  <button class="article-gallery-thumb" type="button" data-gallery-thumb data-full="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa16-02-abrir_propriedades.png" data-alt="Acesso às propriedades da camada" data-caption="Acesso às propriedades da pasta/camada no Google Earth.">
+                    <img src="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa16-02-abrir_propriedades.png" alt="Miniatura etapa 16 imagem 2">
+                  </button>
+                  <button class="article-gallery-thumb" type="button" data-gallery-thumb data-full="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa16-03-compartilhar_estilo.png" data-alt="Uso da aba Estilo/Cor e Compartilhar estilo" data-caption="Uso da aba Estilo/Cor e da opção Compartilhar estilo.">
+                    <img src="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa16-03-compartilhar_estilo.png" alt="Miniatura etapa 16 imagem 3">
+                  </button>
+                  <button class="article-gallery-thumb" type="button" data-gallery-thumb data-full="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa16-04-definir_estilo.png" data-alt="Definição de cor e preenchimento" data-caption="Definição de cor e preenchimento para melhorar a visualização.">
+                    <img src="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa16-04-definir_estilo.png" alt="Miniatura etapa 16 imagem 4">
+                  </button>
+                  <button class="article-gallery-thumb" type="button" data-gallery-thumb data-full="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa16-05-definir_altitude.png" data-alt="Ajuste opcional de altitude" data-caption="Ajuste opcional de altitude para melhorar a sobreposição entre camadas.">
+                    <img src="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa16-05-definir_altitude.png" alt="Miniatura etapa 16 imagem 5">
+                  </button>
+                  <button class="article-gallery-thumb" type="button" data-gallery-thumb data-full="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa16-06-definir_estilo.png" data-alt="Aplicação de um estilo diferente para o SICAR" data-caption="Aplicação de um estilo diferente para a camada do SICAR.">
+                    <img src="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa16-06-definir_estilo.png" alt="Miniatura etapa 16 imagem 6">
+                  </button>
+                  <button class="article-gallery-thumb" type="button" data-gallery-thumb data-full="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa16-07-nao_mexer_altitude.png" data-alt="Situação em que não é necessário alterar a altitude" data-caption="Exemplo de situação em que não é necessário alterar a altitude.">
+                    <img src="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa16-07-nao_mexer_altitude.png" alt="Miniatura etapa 16 imagem 7">
+                  </button>
+                  <button class="article-gallery-thumb" type="button" data-gallery-thumb data-full="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa16-08-arquivo_final.png" data-alt="Visual final com o ponto e as poligonais filtradas" data-caption="Visual final com o ponto de estudo e as poligonais filtradas do SIGEF e do SICAR.">
+                    <img src="como_extrair_filtrar_poligonais_usando_raio_busca/imagens/etapa16-08-arquivo_final.png" alt="Miniatura etapa 16 imagem 8">
+                  </button>
+                </div>
+              </div>
+            </section>
+
+            <div class="article-separator"></div>
+
+            <div class="article-conclusion">
+              <h2>Conclusão</h2>
+              <p>
+                Agora você tem um fluxo no QGIS capaz de filtrar automaticamente as poligonais do SIGEF e do SICAR dentro de um raio de busca definido a partir de um ponto.
+              </p>
+              <p>
+                Além de facilitar a análise, esse modelo ajuda a ganhar tempo em atividades repetitivas e pode ser adaptado para outras necessidades no futuro.
+              </p>
+            </div>
+          </section>
+        </div>
+      </article>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-column footer-column-main">
+        <h2 class="footer-title">Paulo André</h2>
+        <p class="footer-text">
+          Geoprocessamento, análise espacial e cartografia aplicada.
+        </p>
+        <p class="footer-text">
+          Aqui reúno meu portfólio, projetos e conteúdos profissionais.
+        </p>
+      </div>
+
+      <div class="footer-column">
+        <h3 class="footer-heading">Navegação</h3>
+        <div class="footer-info-list">
+          <a class="footer-contact-link" href="../index.html">Voltar ao site</a>
+        </div>
+      </div>
+
+      <div class="footer-column">
+        <h3 class="footer-heading">Contato</h3>
+        <div class="footer-info-list">
+          <a class="footer-contact-link" href="mailto:pauloandre3707@gmail.com">pauloandre3707@gmail.com</a>
+          <span class="footer-info-text">Maracanaú, CE – Brasil</span>
+        </div>
+      </div>
+
+      <div class="footer-column">
+        <h3 class="footer-heading">Social</h3>
+        <div class="footer-info-list">
+          <a
+            class="footer-contact-link"
+            href="https://www.linkedin.com/in/paulo-andré-ferreira-da-silva-423897205"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            LinkedIn
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <p class="footer-bottom-text">© 2026 Paulo André — Site pessoal e portfólio profissional.</p>
+    </div>
+  </footer>
+
+  <script src="../js/blog-gallery.js"></script>
+  <script src="../js/article-sidebar.js"></script>
+</body>
+</html>

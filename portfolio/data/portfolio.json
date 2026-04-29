@@ -1,0 +1,336 @@
+{
+  "perfil": {
+    "marca": "PA GEO",
+    "nome": "Paulo André Ferreira",
+    "cargo": "Técnico em Geoprocessamento",
+    "email": "pauloandre3707@gmail.com",
+    "linkedin": "https://www.linkedin.com/in/paulo-andré-ferreira-da-silva-423897205",
+    "linkedinTexto": "linkedin.com/in/paulo-andré-ferreira-da-silva-423897205",
+    "localizacao": "Fortaleza / Maracanaú – CE",
+    "resumo": "Técnico em Geoprocessamento com experiência em análise espacial, cartografia temática e suporte territorial a projetos de energia solar e infraestrutura. Atuação em empresas dos setores de energias renováveis e incorporação, com domínio de QGIS, Google Earth Pro, bases SICAR/SIGEF e documentação fundiária. Comprometido com precisão técnica, organização de dados e apoio à tomada de decisão baseada em informações espaciais."
+  },
+  "portfolio": {
+    "atualizacao": "ABR/2026",
+    "linkGeral": "https://drive.google.com/drive/folders/1Q-GpQZtj7XALYh5Imo8T1suZt03RBAtC?usp=sharing",
+    "tags": [
+      "Geoprocessamento",
+      "SIG",
+      "Análise Espacial",
+      "Cartografia Temática",
+      "Regularização Fundiária"
+    ]
+  },
+  "experiencias": [
+    {
+      "empresa": "Grid Co.",
+      "periodo": "2022 – 2025",
+      "cargos": [
+        "Estagiário de Geografia",
+        "Técnico de Geoprocessamento I",
+        "Técnico de Geoprocessamento II"
+      ],
+      "descricao": "Suporte técnico e territorial a projetos de Usinas Fotovoltaicas (UFVs), com foco em dados espaciais, análise preliminar de áreas e apoio documental.",
+      "atividades": [
+        "Elaboração e organização de arquivos vetoriais para estudos de implantação",
+        "Uso de bases como CAR e SIGEF para apoiar a prospecção em campo",
+        "Levantamento de restrições territoriais (UCs, TIs, assentamentos, APPs)",
+        "Análises espaciais considerando relevo, dimensão e imagens de satélite",
+        "Apoio ao setor jurídico em averbamento, memoriais e documentos técnicos",
+        "Manipulação de bases geoespaciais e apoio a relatórios multissetoriais"
+      ]
+    },
+    {
+      "empresa": "Damous Incorporações",
+      "periodo": "2019 – 2022",
+      "cargos": [
+        "Estagiário de Agrimensura",
+        "Técnico de Geoprocessamento Júnior"
+      ],
+      "descricao": "Atividades técnicas relacionadas a projetos do setor energético, com foco em documentação técnica, organização de informações territoriais e apoio à regularização fundiária.",
+      "atividades": [
+        "Elaboração de croquis e memoriais descritivos de faixas de servidão",
+        "Organização, conferência e filtragem documental de proprietários e imóveis",
+        "Análise de documentos fundiários e cadastrais (CIT, ITR, CCIR e CAR)",
+        "Preparação de arquivos para criação e atualização do CAR",
+        "Acompanhamento semanal da evolução das áreas e pendências de negociação"
+      ]
+    }
+  ],
+  "formacao": {
+    "academica": [
+      {
+        "curso": "Bacharelado em Geografia",
+        "instituicao": "Estácio – EAD",
+        "periodo": "2020 – 2026"
+      },
+      {
+        "curso": "Curso Técnico em Agrimensura",
+        "instituicao": "EEEP Darcy Ribeiro",
+        "periodo": "2017 – 2019"
+      }
+    ],
+    "cursos": [
+      {
+        "curso": "GNSS RTK - Introdutório",
+        "instituicao": "Gedata Engenharia – Presencial",
+        "periodo": "2025 – Carga Horária 24 horas"
+      },
+      {
+        "curso": "Topografia com Drones - Introdutório",
+        "instituicao": "Gedata Engenharia – Presencial",
+        "periodo": "2025 – Carga Horária 24 horas"
+      }
+    ]
+  },
+  "ferramentas": [
+    {
+      "titulo": "Geoprocessamento e Análise Geoespacial",
+      "descricao": "QGIS (Intermediário), Google Earth Pro (Intermediário), SICAR (Básico)"
+    },
+    {
+      "titulo": "Organização e Gestão de Tarefas",
+      "descricao": "Notion, Microsoft Planner, Microsoft Loop, Trello"
+    },
+    {
+      "titulo": "Desenho Técnico",
+      "descricao": "AutoCAD (Básico)"
+    },
+    {
+      "titulo": "Produtividade e Colaboração",
+      "descricao": "Microsoft 365 (Intermediário) – Teams, Excel, Word, PowerPoint, OneDrive, Outlook"
+    },
+    {
+      "titulo": "Programação e Desenvolvimento",
+      "descricao": "Python (Básico), Visual Studio Code (Básico)"
+    },
+    {
+      "titulo": "Inteligência Artificial",
+      "descricao": "ChatGPT, Gemini, Claude, My Hub IA"
+    }
+  ],
+  "competencias": [
+    {
+      "titulo": "Geoprocessamento e Análise Espacial",
+      "itens": [
+        "Manipulação de dados vetoriais e matriciais",
+        "Elaboração de mapas temáticos",
+        "Análise espacial aplicada ao uso e ocupação do solo",
+        "Interpretação de imagens de satélite",
+        "Georreferenciamento de informações territoriais",
+        "Identificação de restrições territoriais e ambientais",
+        "Análise preliminar de áreas para implantação de projetos",
+        "Vetorização, edição e conferência de arquivos geoespaciais",
+        "Cruzamento de camadas geográficas",
+        "Apoio à tomada de decisão com base em dados espaciais"
+      ]
+    },
+    {
+      "titulo": "Análise Territorial Aplicada",
+      "itens": [
+        "Levantamento de restrições territoriais",
+        "Apoio à prospecção de áreas",
+        "Análise de viabilidade territorial preliminar",
+        "Organização de dados para projetos de usinas fotovoltaicas",
+        "Apoio técnico a estudos fundiários, ambientais e jurídicos",
+        "Avaliação inicial de relevo, acesso e dimensão mínima de áreas",
+        "Suporte territorial para implantação de empreendimentos"
+      ]
+    },
+    {
+      "titulo": "Bases Cartográficas e Dados Territoriais",
+      "itens": [
+        "Consulta e interpretação de bases SICAR e SIGEF",
+        "Organização e análise de informações cadastrais e fundiárias",
+        "Leitura de memoriais descritivos, plantas e croquis",
+        "Apoio na análise de documentos territoriais",
+        "Estruturação de informações para regularização fundiária"
+      ]
+    },
+    {
+      "titulo": "Documentação & Organização de Processos",
+      "itens": [
+        "Elaboração de croquis e peças técnicas",
+        "Organização documental de processos fundiários",
+        "Conferência e padronização de documentos técnicos",
+        "Estruturação e padronização de bases de dados",
+        "Controle e acompanhamento de pendências operacionais",
+        "Suporte à elaboração de relatórios e entregas técnicas",
+        "Integração entre informações espaciais e documentais"
+      ]
+    }
+  ],
+  "projetos": [
+    {
+      "numero": "01",
+      "slug": "projeto-01",
+      "titulo": "Análise de Acessibilidade Hospitalar para Atendimento de Emergências – Estado do Ceará",
+      "objetivo": "Avaliar a acessibilidade espacial aos hospitais habilitados para urgência e emergência no Ceará, considerando deslocamentos de até 1 hora por via terrestre, a fim de identificar possíveis áreas com menor cobertura assistencial.",
+      "dados": [
+        "CNES",
+        "Malha Municipal IBGE"
+      ],
+      "ferramentas": [
+        "QGIS",
+        "Microsoft Excel",
+        "Google Earth Pro"
+      ],
+      "tipoAnalise": "Análise de acessibilidade por isócrona (1h de deslocamento terrestre)",
+      "metodologia": [
+        "Coleta e tratamento dos dados do CNES",
+        "Filtragem das unidades habilitadas para urgência e emergência",
+        "Espacialização no QGIS e geração dos pontos hospitalares",
+        "Análise de isócrona – 1h de deslocamento por automóvel",
+        "Elaboração do mapa temático de cobertura assistencial"
+      ],
+      "linkProjeto": "https://drive.google.com/drive/folders/1wXtG_tRdlxh9-T138QKgNW5tuYkl_alA?usp=sharing",
+      "imagemCapa": {
+        "src": "../imagens/projetos/acessibilidade_hospitalar/mapa_geral-266x173.png",
+        "width": "800px",
+        "height": "520px"
+      },
+      "paginasExtras": [
+        {
+          "texto": "A análise por isócrona permitiu identificar municípios e regiões do estado com menor cobertura no tempo de 1 hora de deslocamento terrestre, evidenciando lacunas na distribuição espacial das unidades hospitalares habilitadas para urgência e emergência.",
+          "imagens": [
+            {
+              "src": "../imagens/projetos/acessibilidade_hospitalar/mapa_hospital_geral.png",
+              "width": "451px",
+              "height": "562px"
+            },
+            {
+              "src": "../imagens/projetos/acessibilidade_hospitalar/mapa_hospital_especializado.png",
+              "width": "451px",
+              "height": "562px"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "numero": "02",
+      "slug": "projeto-02",
+      "titulo": "Prancha Técnica para Faixa de Servidão em Linha de Transmissão",
+      "objetivo": "Elaboração de pranchas técnicas para representação territorial de imóvel impactado por faixa de servidão, com foco em delimitação espacial, organização cartográfica e identificação de benfeitorias atingidas.",
+      "dados": [
+        "Poligonal do Imóvel",
+        "Faixa de Servidão",
+        "Levantamento Territorial"
+      ],
+      "ferramentas": [
+        "QGIS",
+        "Microsoft Excel",
+        "Google Earth Pro"
+      ],
+      "tipoAnalise": "Produção cartográfica e organização técnica de informações territoriais",
+      "metodologia": [
+        "Recebimento e organização dos dados do levantamento",
+        "Delimitação da poligonal do imóvel e faixa de servidão no QGIS",
+        "Identificação e mapeamento das benfeitorias impactadas",
+        "Elaboração das pranchas cartográficas",
+        "Geração do KMZ com dados cadastrais integrados"
+      ],
+      "linkProjeto": "https://drive.google.com/drive/folders/1gCB2jTqB_3kCsZYVUMlYRlvt7klyLTNI?usp=sharing",
+      "imagemCapa": {
+        "src": "../imagens/projetos/faixa_de_servidão_benfeitorias/mapa_ilustrativo_800x520.png",
+        "width": "800px",
+        "height": "520px"
+      },
+      "paginasExtras": [
+        {
+          "texto": "Prancha técnica da poligonal do imóvel e da faixa impactada, elaborada para comprovação da conclusão do georreferenciamento do imóvel.",
+          "imagens": [
+            {
+              "src": "../imagens/projetos/faixa_de_servidão_benfeitorias/planta_02-poligonal_do_imovel.png",
+              "width": "855px",
+              "height": "604px"
+            }
+          ]
+        },
+        {
+          "texto": "Prancha técnica com a representação das benfeitorias identificadas in loco.",
+          "imagens": [
+            {
+              "src": "../imagens/projetos/faixa_de_servidão_benfeitorias/planta_03-benfeitorias_levantadas.png",
+              "width": "855px",
+              "height": "604px"
+            }
+          ]
+        },
+        {
+          "texto": "O projeto contempla a geração do arquivo KMZ. Diferentemente das pranchas estáticas, o KMZ permite navegação interativa e melhor demonstração das camadas vetoriais. Também é possível incorporar ao arquivo informações provenientes de planilhas, incluindo dados cadastrais, status documentais e informações de progresso, facilitando a consulta, organização e o acompanhamento técnico.",
+          "imagens": [
+            {
+              "src": "../imagens/projetos/faixa_de_servidão_benfeitorias/tabela_de_descricao_do_kmz_1-663x754.png",
+              "width": "510px",
+              "height": "580px"
+            },
+            {
+              "src": "../imagens/projetos/faixa_de_servidão_benfeitorias/tabela_de_descricao_do_kmz_2-663x754.png",
+              "width": "510px",
+              "height": "580px"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "numero": "03",
+      "slug": "projeto-03",
+      "titulo": "Arquivo Vetorial (KMZ) a partir de Imagens Geolocalizadas com Registro Temporal (TimeStamp)",
+      "objetivo": "Desenvolvimento de arquivo vetorial no formato KMZ contendo imagens geolocalizadas com registro temporal (TimeStamp), aplicado ao estudo de interferências e identificação de benfeitorias em campo.",
+      "dados": [
+        "Fotografias geolocalizadas (TimeStamp)"
+      ],
+      "ferramentas": [
+        "TimeStamp Camera",
+        "QGIS",
+        "Google Earth Pro"
+      ],
+      "tipoAnalise": "Levantamento fotográfico geolocalizado e estruturação de arquivo KMZ",
+      "metodologia": [
+        "Levantamento fotográfico em campo com registro geolocalizado via smartphone",
+        "Importação e georreferenciamento das imagens no QGIS",
+        "Geração do arquivo KMZ com imagens geolocalizadas e dados integrados",
+        "Elaboração de relatório técnico com base no levantamento de campo"
+      ],
+      "linkProjeto": "https://drive.google.com/drive/folders/1ID8drMEv9nbGACnDBqG3rNSO6PW4PgEG?usp=sharing",
+      "imagemCapa": {
+        "src": "../imagens/projetos/arquivo_levantamento_fotografico/mapa_levantamento_fotografico.png",
+        "width": "800px",
+        "height": "520px"
+      },
+      "paginasExtras": [
+        {
+          "texto": "Esta metodologia é especialmente útil em situações onde a geração de ortosmosaicos não é viável, funcionando tanto como solução alternativa quanto como dado complementar ao mapeamento aéreo — oferecendo uma visão terrestre detalhada de terrenos, estruturas e elementos de interesse para análise espacial.",
+          "imagens": [
+            {
+              "src": "../imagens/projetos/arquivo_levantamento_fotografico/foto_geolocalizada1-765x870.png",
+              "width": "510px",
+              "height": "580px"
+            },
+            {
+              "src": "../imagens/projetos/arquivo_levantamento_fotografico/foto_geolocalizada2-765x870.png",
+              "width": "510px",
+              "height": "580px"
+            }
+          ]
+        },
+        {
+          "texto": "Com o arquivo KMZ contendo as imagens geolocalizadas, é possível complementar a análise por meio de um relatório de vistoria estruturado. A partir da marcação e localização geográfica das fotografias, torna-se viável identificar e evidenciar pontos de atenção no terreno, fornecendo subsídios técnicos alinhados ao objetivo do estudo.",
+          "imagens": [
+            {
+              "src": "../imagens/projetos/arquivo_levantamento_fotografico/relatorio_vistoria1-714x870.png",
+              "width": "510px",
+              "height": "580px"
+            },
+            {
+              "src": "../imagens/projetos/arquivo_levantamento_fotografico/relatorio_vistoria2-714x870.png",
+              "width": "510px",
+              "height": "580px"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
