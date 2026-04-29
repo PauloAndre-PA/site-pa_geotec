@@ -1,3 +1,7 @@
+// =====================================================
+//  CURRÍCULO A4 — RENDER
+// =====================================================
+
 function escapeHtml(text) {
   return String(text ?? '')
     .replaceAll('&', '&amp;')
@@ -14,92 +18,126 @@ async function carregarPortfolio() {
 
 function renderCurriculo(data) {
   return `
-    <section class="pagina">
-      <div class="cabecalho-interno">
-        <span class="cabecalho-interno-nome">${escapeHtml(data.perfil.nome)}</span>
-        <span class="cabecalho-interno-secao">${escapeHtml(data.perfil.cargo)}</span>
+    <!-- ========== PÁGINA 1 ========== -->
+    <section class="curriculo-pagina">
+
+      <!-- Hero expandido — sem cabeçalho interno -->
+      <div class="curriculo-hero">
+        <div class="curriculo-hero-texto">
+          <h1 class="curriculo-hero-nome">${escapeHtml(data.perfil.nome)}</h1>
+          <span class="curriculo-hero-cargo">${escapeHtml(data.perfil.cargo)}</span>
+        </div>
+        <div class="curriculo-hero-direita">
+          <a href="${escapeHtml(data.perfil.site)}" target="_blank" class="curriculo-hero-site">
+            ${escapeHtml(data.perfil.siteTexto)}
+          </a>
+          <div class="curriculo-hero-tags">
+            ${data.portfolio.tags.map(tag => `
+              <span class="curriculo-hero-tag">${escapeHtml(tag)}</span>
+            `).join('')}
+          </div>
+        </div>
       </div>
 
-      <div class="conteudo-interno" style="gap:18px;">
+      <div class="conteudo-interno curriculo-conteudo">
+
         <div class="secao-header">
           <span class="secao-titulo-pagina">Perfil Profissional</span>
           <div class="secao-header-linha"></div>
         </div>
 
-        <div style="font-size:13px; line-height:1.8; background:var(--cor-cinza); padding:14px 16px; border-left:4px solid var(--cor-acento); border-radius:0 8px 8px 0;">
+        <div class="curriculo-resumo">
           ${escapeHtml(data.perfil.resumo)}
         </div>
 
-        <div class="secao-header" style="margin-bottom:10px;">
+        <div class="secao-header">
           <span class="secao-titulo-pagina">Contato</span>
           <div class="secao-header-linha"></div>
         </div>
 
-        <div class="formacao-grid">
-          <div class="formacao-item">
-            <div class="formacao-curso">E-mail</div>
-            <div class="formacao-inst">${escapeHtml(data.perfil.email)}</div>
+        <div class="curriculo-contato-grid">
+
+          <!-- Linha 1: Email | WhatsApp | Localização -->
+          <div class="curriculo-contato-item">
+            <span class="curriculo-contato-label">✉ E-mail</span>
+            <span class="curriculo-contato-valor">${escapeHtml(data.perfil.email)}</span>
+          </div>
+          <div class="curriculo-contato-item">
+            <span class="curriculo-contato-label">📱 WhatsApp</span>
+            <a href="${escapeHtml(data.perfil.whatsapp)}" target="_blank" class="curriculo-link">
+              ${escapeHtml(data.perfil.telefone)}
+            </a>
+          </div>
+          <div class="curriculo-contato-item">
+            <span class="curriculo-contato-label">📍 Localização</span>
+            <span class="curriculo-contato-valor">${escapeHtml(data.perfil.localizacao)}</span>
           </div>
 
-          <div class="formacao-item">
-            <div class="formacao-curso">LinkedIn</div>
-            <div class="formacao-inst">
-              <a href="${escapeHtml(data.perfil.linkedin)}" target="_blank" style="color:var(--cor-secundaria); text-decoration:none;">
-                ${escapeHtml(data.perfil.linkedinTexto)}
-              </a>
-            </div>
+          <!-- Linha 2: Site | LinkedIn (2 colunas) -->
+          <div class="curriculo-contato-item">
+            <span class="curriculo-contato-label">🌐 Site / Portfólio</span>
+            <a href="${escapeHtml(data.perfil.site)}" target="_blank" class="curriculo-link">
+              ${escapeHtml(data.perfil.siteTexto)}
+            </a>
+          </div>
+          <div class="curriculo-contato-item curriculo-contato-item--largo">
+            <span class="curriculo-contato-label">🔗 LinkedIn</span>
+            <a href="${escapeHtml(data.perfil.linkedin)}" target="_blank" class="curriculo-link">
+              ${escapeHtml(data.perfil.linkedinTexto)}
+            </a>
           </div>
 
-          <div class="formacao-item">
-            <div class="formacao-curso">Localização</div>
-            <div class="formacao-inst">${escapeHtml(data.perfil.localizacao)}</div>
-          </div>
-
-          <div class="formacao-item">
-            <div class="formacao-curso">Portfólio</div>
-            <div class="formacao-inst">
-              <a href="${escapeHtml(data.portfolio.linkGeral)}" target="_blank" style="color:var(--cor-secundaria); text-decoration:none;">
-                Acessar portfólio online
-              </a>
-            </div>
-          </div>
         </div>
 
-        <div class="secao-header" style="margin-bottom:10px;">
+        <div class="secao-header">
           <span class="secao-titulo-pagina">Experiência Profissional</span>
           <div class="secao-header-linha"></div>
         </div>
 
-        <div class="exp-container">
+        <div class="curriculo-exp-container">
           ${data.experiencias.map(exp => `
-            <div class="exp-item">
-              <div class="exp-lateral">
-                <div class="exp-empresa">${escapeHtml(exp.empresa)}</div>
-                <div class="exp-periodo">${escapeHtml(exp.periodo)}</div>
-                <div class="exp-cargo">${exp.cargos.map(c => escapeHtml(c)).join('<br>')}</div>
+            <div class="curriculo-exp-item">
+              <div class="curriculo-exp-lateral">
+                <div class="curriculo-exp-empresa">${escapeHtml(exp.empresa)}</div>
+                <div class="curriculo-exp-periodo">${escapeHtml(exp.periodo)}</div>
+                <div class="curriculo-exp-cargos">
+                  ${exp.cargos.map(c => `<span>${escapeHtml(c)}</span>`).join('')}
+                </div>
               </div>
-              <div class="exp-conteudo">
-                <div class="exp-desc">${escapeHtml(exp.descricao)}</div>
+              <div class="curriculo-exp-conteudo">
+                <p class="curriculo-exp-desc">${escapeHtml(exp.descricao)}</p>
+                ${exp.atividades && exp.atividades.length > 0 ? `
+                  <ul class="curriculo-exp-lista">
+                    ${exp.atividades.map(a => `<li>${escapeHtml(a)}</li>`).join('')}
+                  </ul>
+                ` : ''}
               </div>
             </div>
           `).join('')}
         </div>
+
       </div>
 
       <div class="rodape">
         <span class="rodape-nome">${escapeHtml(data.perfil.nome)} – ${escapeHtml(data.perfil.cargo)}</span>
         <span class="rodape-pg">1 / 2</span>
       </div>
+
     </section>
 
-    <section class="pagina">
+    <!-- ========== PÁGINA 2 ========== -->
+    <section class="curriculo-pagina">
+
       <div class="cabecalho-interno">
         <span class="cabecalho-interno-nome">${escapeHtml(data.perfil.nome)}</span>
-        <span class="cabecalho-interno-secao">Formação e Competências</span>
+        <a href="${escapeHtml(data.perfil.site)}" target="_blank" class="cabecalho-interno-site">
+          ${escapeHtml(data.perfil.siteTexto)}
+        </a>
       </div>
 
-      <div class="conteudo-interno" style="gap:18px;">
-        <div class="secao-header" style="margin-bottom:10px;">
+      <div class="conteudo-interno curriculo-conteudo">
+
+        <div class="secao-header">
           <span class="secao-titulo-pagina">Formação Acadêmica</span>
           <div class="secao-header-linha"></div>
         </div>
@@ -114,7 +152,7 @@ function renderCurriculo(data) {
           `).join('')}
         </div>
 
-        <div class="secao-header" style="margin-bottom:10px;">
+        <div class="secao-header">
           <span class="secao-titulo-pagina">Cursos Complementares</span>
           <div class="secao-header-linha"></div>
         </div>
@@ -129,7 +167,7 @@ function renderCurriculo(data) {
           `).join('')}
         </div>
 
-        <div class="secao-header" style="margin-bottom:10px;">
+        <div class="secao-header">
           <span class="secao-titulo-pagina">Competências Técnicas</span>
           <div class="secao-header-linha"></div>
         </div>
@@ -144,16 +182,21 @@ function renderCurriculo(data) {
             </div>
           `).join('')}
         </div>
+
       </div>
 
       <div class="rodape">
         <span class="rodape-nome">${escapeHtml(data.perfil.nome)} – ${escapeHtml(data.perfil.cargo)}</span>
         <span class="rodape-pg">2 / 2</span>
       </div>
+
     </section>
   `;
 }
 
+// =====================================================
+//  INICIALIZAÇÃO
+// =====================================================
 document.addEventListener('DOMContentLoaded', async () => {
   const app = document.getElementById('curriculoA4');
   if (!app) return;
@@ -162,7 +205,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const data = await carregarPortfolio();
     app.innerHTML = renderCurriculo(data);
   } catch (erro) {
-    app.innerHTML = '<div style="padding:40px;">Erro ao carregar portfolio.json</div>';
+    app.innerHTML = '<div style="padding:40px; color:red;">❌ Erro ao carregar portfolio.json</div>';
     console.error(erro);
   }
 });

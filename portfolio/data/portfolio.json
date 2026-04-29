@@ -4,6 +4,10 @@
     "nome": "Paulo André Ferreira",
     "cargo": "Técnico em Geoprocessamento",
     "email": "pauloandre3707@gmail.com",
+    "telefone": "(85) 9 8441-1160",
+    "whatsapp": "https://wa.me/5585984411160",
+    "site": "https://pageotec.com.br/",
+    "siteTexto": "pageotec.com.br",
     "linkedin": "https://www.linkedin.com/in/paulo-andré-ferreira-da-silva-423897205",
     "linkedinTexto": "linkedin.com/in/paulo-andré-ferreira-da-silva-423897205",
     "localizacao": "Fortaleza / Maracanaú – CE",
@@ -61,7 +65,7 @@
       {
         "curso": "Bacharelado em Geografia",
         "instituicao": "Estácio – EAD",
-        "periodo": "2020 – 2026"
+        "periodo": "2020 – 2026 – Cursando"
       },
       {
         "curso": "Curso Técnico em Agrimensura",

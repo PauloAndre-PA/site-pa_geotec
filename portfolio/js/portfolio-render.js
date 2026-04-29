@@ -88,6 +88,28 @@ function renderCapa(data) {
             <div class="icon">📍</div>
             ${escapeHtml(data.perfil.localizacao)}
           </div>
+
+          <div class="capa-contato-item">
+            <div class="icon">📱</div>
+            <a
+              href="${escapeHtml(data.perfil.whatsapp)}"
+              target="_blank"
+              style="color:#0000EE; text-decoration:underline;"
+            >
+              ${escapeHtml(data.perfil.telefone)}
+            </a>
+          </div>
+
+          <div class="capa-contato-item">
+            <div class="icon">🌐</div>
+            <a
+              href="${escapeHtml(data.perfil.site)}"
+              target="_blank"
+              style="color:#0000EE; text-decoration:underline;"
+            >
+              ${escapeHtml(data.perfil.siteTexto)}
+            </a>
+          </div>
         </div>
 
         <div class="capa-ano">${escapeHtml(data.portfolio.atualizacao)}</div>
@@ -529,6 +551,36 @@ function renderContatoFinal(data) {
           Estou disponível para novas oportunidades na área de geoprocessamento,
           análise espacial e suporte territorial. Entre em contato!
         </div>
+
+        <a
+          href="${escapeHtml(data.perfil.site)}"
+          target="_blank"
+          style="
+            display:inline-flex;
+            flex-direction:column;
+            gap:4px;
+            margin-top:28px;
+            padding:14px 20px;
+            background:rgba(255,255,255,0.06);
+            border:1px solid rgba(255,255,255,0.18);
+            border-radius:10px;
+            text-decoration:none;
+            transition:background 0.2s;
+            max-width:280px;
+          "
+          onmouseover="this.style.background='rgba(255,255,255,0.13)'"
+          onmouseout="this.style.background='rgba(255,255,255,0.06)'"
+        >
+          <span style="font-size:10px; color:rgba(255,255,255,0.5); text-transform:uppercase; letter-spacing:1.2px;">
+            🌐 Portfólio Online
+          </span>
+          <span style="font-size:15px; font-weight:700; color:#ffffff; letter-spacing:0.3px;">
+            ${escapeHtml(data.perfil.siteTexto)}
+          </span>
+          <span style="font-size:10px; color:rgba(255,255,255,0.45); margin-top:2px;">
+            Acesse para ver projetos e versão interativa
+          </span>
+        </a>
       </div>
 
       <div class="contato-direita">
@@ -555,6 +607,20 @@ function renderContatoFinal(data) {
         </div>
 
         <div class="contato-item">
+          <div class="contato-icone">📱</div>
+          <div>
+            <div class="contato-info-label">WhatsApp</div>
+            <a
+              href="${escapeHtml(data.perfil.whatsapp)}"
+              target="_blank"
+              style="color:var(--cor-acento); text-decoration:none;"
+            >
+              <div class="contato-info-valor">${escapeHtml(data.perfil.telefone)}</div>
+            </a>
+          </div>
+        </div>
+
+        <div class="contato-item">
           <div class="contato-icone">📍</div>
           <div>
             <div class="contato-info-label">Localização</div>
@@ -565,7 +631,6 @@ function renderContatoFinal(data) {
     </section>
   `;
 }
-
 
 async function carregarPortfolio() {
   const resposta = await fetch('data/portfolio.json');

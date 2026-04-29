@@ -1,0 +1,29 @@
+@page {
+  size: A4 portrait;
+  margin: 0;
+}
+
+/* ✅ Corrige a visualização no navegador também */
+.pagina {
+  width: 210mm;
+  height: 297mm;
+}
+
+@media print {
+  body {
+    background: white;
+  }
+
+  .pagina {
+    margin: 0;
+    box-shadow: none;
+    page-break-after: always;
+    width: 210mm;
+    height: 297mm;
+  }
+
+  .btn-navegacao,
+  .barra-progresso {
+    display: none !important;
+  }
+}

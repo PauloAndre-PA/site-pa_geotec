@@ -1,0 +1,262 @@
+/* =====================================================
+   CURRÍCULO A4 — CSS EXCLUSIVO
+   Não afeta o portfólio principal
+   ===================================================== */
+
+/* --- Página --- */
+.curriculo-pagina {
+  width: 210mm;
+  height: 297mm;
+  background: #fff;
+  margin: 16px auto;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.18);
+  position: relative;
+  page-break-after: always;
+}
+
+/* --- Cabeçalho interno (apenas página 2) --- */
+.cabecalho-interno-site {
+  font-size: 10px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.7);
+  letter-spacing: 1.5px;
+  text-decoration: none;
+  text-transform: lowercase;
+  transition: color 0.2s;
+}
+
+.cabecalho-interno-site:hover {
+  color: #ffffff;
+}
+
+/* --- Hero: página 1 — expandido, sem cabeçalho acima --- */
+.curriculo-hero {
+  background: linear-gradient(90deg, var(--cor-primaria) 0%, var(--cor-secundaria) 100%);
+  padding: 26px 36px 22px 36px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  flex-shrink: 0;
+}
+
+.curriculo-hero-texto {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.curriculo-hero-nome {
+  font-size: 30px;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: 0.5px;
+  line-height: 1.1;
+}
+
+.curriculo-hero-cargo {
+  font-size: 12px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.75);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+/* Lado direito do hero: site + tags empilhados */
+.curriculo-hero-direita {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+}
+
+/* Link do site no hero da página 1 */
+.curriculo-hero-site {
+  font-size: 11px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  letter-spacing: 0.5px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  padding-bottom: 2px;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.curriculo-hero-site:hover {
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.8);
+}
+
+.curriculo-hero-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  justify-content: flex-end;
+  max-width: 320px;
+}
+
+.curriculo-hero-tag {
+  font-size: 9px;
+  font-weight: 500;
+  padding: 2px 9px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: rgba(255, 255, 255, 0.85);
+  letter-spacing: 0.3px;
+}
+
+/* --- Conteúdo interno --- */
+.curriculo-conteudo {
+  gap: 18px; /* ← aumentado de 10px para 18px */
+  overflow: hidden;
+}
+
+/* --- Espaço fino nos títulos de seção --- */
+.curriculo-conteudo .secao-header {
+  margin-top: 6px;   /* ← espaço extra acima do título */
+  margin-bottom: 4px; /* ← espaço abaixo do título */
+}
+
+/* --- Resumo / Perfil --- */
+.curriculo-resumo {
+  font-size: 12px;
+  line-height: 1.65;
+  background: var(--cor-cinza);
+  padding: 10px 14px;
+  border-left: 4px solid var(--cor-acento);
+  border-radius: 0 8px 8px 0;
+  color: var(--cor-texto);
+}
+
+/* --- Grid de Contato --- */
+.curriculo-contato-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.curriculo-contato-item {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding: 8px 12px;
+  background: #fff;
+  border: 1px solid var(--cor-linha);
+  border-radius: 8px;
+}
+
+/* LinkedIn ocupa 2 colunas */
+.curriculo-contato-item--largo {
+  grid-column: span 2;
+}
+
+.curriculo-contato-label {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--cor-secundaria);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.curriculo-contato-valor {
+  font-size: 12px;
+  color: var(--cor-texto);
+}
+
+.curriculo-link {
+  font-size: 11.5px;
+  color: var(--cor-secundaria);
+  text-decoration: none;
+  word-break: break-all;
+}
+
+.curriculo-link:hover {
+  text-decoration: underline;
+}
+
+/* --- Experiência --- */
+.curriculo-exp-container {
+  display: flex;
+  flex-direction: column;
+  gap: 25px; /* ← aumentado de 10px para 14px */
+}
+
+.curriculo-exp-item {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 16px;
+  padding: 10px 14px;
+  border: 1px solid var(--cor-linha);
+  border-left: 3px solid var(--cor-secundaria);
+  border-radius: 10px;
+  background: #fff;
+}
+
+.curriculo-exp-empresa {
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--cor-primaria);
+  margin-bottom: 4px;
+}
+
+.curriculo-exp-periodo {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--cor-acento);
+  margin-bottom: 8px;
+}
+
+.curriculo-exp-cargos {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.curriculo-exp-cargos span {
+  font-size: 11px;
+  color: var(--cor-texto-claro);
+  line-height: 1.5;
+}
+
+.curriculo-exp-desc {
+  font-size: 12px;
+  line-height: 1.65;
+  color: var(--cor-texto);
+  margin-bottom: 8px;
+}
+
+.curriculo-exp-lista {
+  padding-left: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.curriculo-exp-lista li {
+  font-size: 10.5px;
+  line-height: 1.45;
+  color: var(--cor-texto-claro);
+}
+
+.curriculo-exp-lista li::marker {
+  color: var(--cor-acento);
+}
+
+/* --- Print --- */
+@media print {
+  .curriculo-pagina {
+    margin: 0;
+    box-shadow: none;
+    width: 210mm;
+    height: 297mm;
+  }
+
+  .btn-navegacao,
+  .barra-progresso {
+    display: none !important;
+  }
+}
