@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Conteúdos | PA GeoTec</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../../css/variaveis.css" />
+  <link rel="stylesheet" href="../../css/base.css" />
+  <link rel="stylesheet" href="../../css/layout.css" />
+  <link rel="stylesheet" href="../../css/componentes.css" />
+</head>
+<body>
+
+  <div id="site-header"></div>
+
+  <main class="site-main">
+
+    <section class="hero-section">
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <h1>Conteúdos <span>Técnicos</span></h1>
+          <p>
+            Artigos, tutoriais e publicações sobre geoprocessamento, QGIS,
+            análise espacial e boas práticas em projetos de geotecnologia.
+          </p>
+          <div class="hero-tags">
+            <span>Tutoriais</span>
+            <span>QGIS</span>
+            <span>Análise Espacial</span>
+            <span>Cartografia</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-block">
+      <div class="container">
+        <div class="section-title">
+          <span>Todos os Artigos</span>
+          <div class="section-line"></div>
+        </div>
+        <p class="page-description">
+          Todos os conteúdos publicados, ordenados do mais recente ao mais antigo.
+        </p>
+        <div class="conteudo-grid" id="conteudoGridCompleto"></div>
+      </div>
+    </section>
+
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="../../js/contato-data.js"></script>
+  <script src="../../js/componentes.js"></script>
+  <script src="../../js/conteudos-data.js"></script>
+  <script src="../../js/render-home-conteudos.js"></script>
+</body>
+</html>

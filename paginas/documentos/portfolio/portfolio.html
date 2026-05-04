@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfólio A4 | Paulo André</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- CSS do portfólio A4 (mantidos como estavam) -->
+  <link rel="stylesheet" href="../../../portfolio/css/variaveis.css" />
+  <link rel="stylesheet" href="../../../portfolio/css/layout.css" />
+  <link rel="stylesheet" href="../../../portfolio/css/componentes.css" />
+  <link rel="stylesheet" href="../../../portfolio/css/print.css" />
+
+  <style>
+    body {
+      background: #e8ecf0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 20px;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .portfolio-toolbar {
+      width: 1122px;
+      max-width: 100%;
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    .portfolio-toolbar button {
+      padding: 9px 18px;
+      border: none;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      background: #1a3a5c;
+      color: #ffffff;
+      transition: background 0.2s;
+    }
+
+    .portfolio-toolbar button:hover { background: #2e6da4; }
+  </style>
+</head>
+<body>
+
+  <!-- Barra de ações -->
+  <div class="portfolio-toolbar">
+    <button onclick="window.print()">🖨️ Imprimir / Salvar PDF</button>
+    <button onclick="window.history.back()">← Voltar</button>
+  </div>
+
+  <!-- ══════════════════════════════════════════════
+       PORTFÓLIO A4 — CAPA
+       ══════════════════════════════════════════════ -->
+  <section class="pagina capa" data-sem-contagem>
+    <div class="capa-esquerda">
+      <div class="capa-label">PA GeoTec</div>
+      <div class="capa-titulo">
+        Paulo André
+        <span>Mesquita Lima</span>
+      </div>
+      <div class="capa-subtitulo">
+        Profissional de geoprocessamento com experiência em análise espacial,
+        produção cartográfica e suporte territorial a projetos de infraestrutura e energia.
+      </div>
+      <div class="capa-tags">
+        <span class="capa-tag">QGIS</span>
+        <span class="capa-tag">Google Earth Pro</span>
+        <span class="capa-tag">Análise Espacial</span>
+        <span class="capa-tag">Cartografia</span>
+        <span class="capa-tag">Regularização Fundiária</span>
+      </div>
+    </div>
+
+    <div class="capa-direita">
+      <div class="capa-deco"></div>
+      <div class="capa-contato">
+        <div class="capa-contato-item">
+          <div class="icon">✉</div>
+          pauloandre3707@gmail.com
+        </div>
+        <div class="capa-contato-item">
+          <div class="icon">in</div>
+          <a href="https://www.linkedin.com/in/pauloandre-pageotec" target="_blank"
+             style="color:#0000EE; text-decoration:underline;">
+            linkedin.com/in/pauloandre-pageotec
+          </a>
+        </div>
+        <div class="capa-contato-item">
+          <div class="icon">📍</div>
+          Maracanaú, CE – Brasil
+        </div>
+        <div class="capa-contato-item">
+          <div class="icon">📱</div>
+          <a href="https://wa.me/5585999999999" target="_blank"
+             style="color:#0000EE; text-decoration:underline;">
+            (85) 9 9999-9999
+          </a>
+        </div>
+        <div class="capa-contato-item">
+          <div class="icon">🌐</div>
+          <a href="https://seusite.com.br" target="_blank"
+             style="color:#0000EE; text-decoration:underline;">
+            seusite.com.br
+          </a>
+        </div>
+      </div>
+      <div class="capa-ano">ABR/2026</div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       PORTFÓLIO A4 — SUMÁRIO
+       ══════════════════════════════════════════════ -->
+  <section class="pagina sumario" data-sem-contagem>
+    <div class="sumario-lateral"></div>
+    <div class="sumario-conteudo">
+      <div class="secao-header">
+        <span class="secao-titulo-pagina">Sumário</span>
+        <div class="secao-header-linha"></div>
+        <span style="font-size:10px;color:var(--cor-texto-claro);">
+          Paulo André – Técnico em Geoprocessamento
+        </span>
+      </div>
+
+      <div class="sumario-grid">
+        <div class="sumario-grupo-label">Perfil Profissional</div>
+
+        <div class="sumario-item">
+          <div class="sumario-num">01</div>
+          <div class="sumario-info">
+            <div class="sumario-info-titulo">Experiência Profissional</div>
+          </div>
+          <div class="sumario-pg">pg. 1</div>
+        </div>
+
+        <div class="sumario-item">
+          <div class="sumario-num">02</div>
+          <div class="sumario-info">
+            <div class="sumario-info-titulo">Formação / Cursos / Ferramentas e Softwares</div>
+          </div>
+          <div class="sumario-pg">pg. 2</div>
+        </div>
+
+        <div class="sumario-item">
+          <div class="sumario-num">03</div>
+          <div class="sumario-info">
+            <div class="sumario-info-titulo">Competências Técnicas</div>
+          </div>
+          <div class="sumario-pg">pg. 3</div>
+        </div>
+
+        <div class="sumario-grupo-label">Projetos</div>
+
+        <div class="sumario-item">
+          <div class="sumario-num">04</div>
+          <div class="sumario-info">
+            <div class="sumario-info-titulo">Projeto 01 – Nome do Projeto</div>
+          </div>
+          <div class="sumario-pg">pg. 4</div>
+        </div>
+
+        <!-- Adicione mais projetos aqui -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       PORTFÓLIO A4 — EXPERIÊNCIA (pg. 1)
+       ══════════════════════════════════════════════ -->
+  <section class="pagina" data-secao="Experiência Profissional">
+    <div class="cabecalho-interno">
+      <span class="cabecalho-interno-nome">Paulo André</span>
+      <span class="cabecalho-interno-secao">01 · Experiência Profissional</span>
+    </div>
+
+    <div class="conteudo-interno">
+      <div class="secao-header">
+        <span class="secao-titulo-pagina">Experiência Profissional</span>
+        <div class="secao-header-linha"></div>
+      </div>
+
+      <div class="exp-container">
+        <div class="exp-item">
+          <div class="exp-lateral">
+            <div class="exp-empresa">Nome da Empresa</div>
+            <div class="exp-periodo">Jan/2023 – Presente</div>
+            <div class="exp-cargo">
+              - Técnico em Geoprocessamento
+            </div>
+          </div>
+          <div class="exp-conteudo">
+            <div class="exp-desc">
+              Descrição geral das atividades e responsabilidades desempenhadas.
+            </div>
+            <div class="exp-bullets">
+              <div class="exp-bullet">Produção de mapas temáticos e relatórios cartográficos</div>
+              <div class="exp-bullet">Análise e organização de dados geoespaciais</div>
+              <div class="exp-bullet">Suporte técnico a projetos de infraestrutura</div>
+              <div class="exp-bullet">Regularização fundiária e análise territorial</div>
+            </div>
+          </div>
+        </div>
+        <!-- Adicione mais experiências aqui -->
+      </div>
+    </div>
+
+    <div class="rodape">
+      <span class="rodape-nome">Paulo André – Técnico em Geoprocessamento</span>
+      <span class="rodape-pg"></span>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       PORTFÓLIO A4 — FORMAÇÃO (pg. 2)
+       ══════════════════════════════════════════════ -->
+  <section class="pagina" data-secao="Formação / Cursos / Ferramentas e Softwares">
+    <div class="cabecalho-interno">
+      <span class="cabecalho-interno-nome">Paulo André</span>
+      <span class="cabecalho-interno-secao">02 · Formação / Cursos / Ferramentas</span>
+    </div>
+
+    <div class="conteudo-interno">
+
+      <div class="secao-header">
+        <span class="secao-titulo-pagina">Formação Acadêmica</span>
+        <div class="secao-header-linha"></div>
+      </div>
+
+      <div class="formacao-grid">
+        <div class="formacao-item">
+          <div class="formacao-curso">Tecnologia em Geoprocessamento</div>
+          <div class="formacao-inst">Nome da Instituição</div>
+          <div class="formacao-periodo">2020 – 2023</div>
+        </div>
+      </div>
+
+      <div class="secao-header" style="margin-top:24px;">
+        <span class="secao-titulo-pagina">Cursos Complementares</span>
+        <div class="secao-header-linha"></div>
+      </div>
+
+      <div class="formacao-grid">
+        <div class="formacao-item">
+          <div class="formacao-curso">Nome do Curso</div>
+          <div class="formacao-inst">Plataforma / Instituição</div>
+          <div class="formacao-periodo">2024</div>
+        </div>
+      </div>
+
+      <div class="secao-header" style="margin-top:24px;">
+        <span class="secao-titulo-pagina">Ferramentas e Softwares</span>
+        <div class="secao-header-linha"></div>
+      </div>
+
+      <div class="formacao-grid">
+        <div class="formacao-item">
+          <div class="formacao-curso">QGIS</div>
+          <div class="formacao-inst">Geoprocessamento vetorial, raster e cartografia temática</div>
+        </div>
+        <div class="formacao-item">
+          <div class="formacao-curso">Google Earth Pro</div>
+          <div class="formacao-inst">Visualização espacial e análise de imagens de satélite</div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="rodape">
+      <span class="rodape-nome">Paulo André – Técnico em Geoprocessamento</span>
+      <span class="rodape-pg"></span>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       PORTFÓLIO A4 — COMPETÊNCIAS (pg. 3)
+       ══════════════════════════════════════════════ -->
+  <section class="pagina" data-secao="Competências Técnicas">
+    <div class="cabecalho-interno">
+      <span class="cabecalho-interno-nome">Paulo André</span>
+      <span class="cabecalho-interno-secao">03 · Competências Técnicas</span>
+    </div>
+
+    <div class="conteudo-interno">
+      <div class="secao-header">
+        <span class="secao-titulo-pagina">Competências Técnicas</span>
+        <div class="secao-header-linha"></div>
+      </div>
+
+      <div class="comp-grid">
+        <div class="comp-grupo">
+          <div class="comp-grupo-titulo">Softwares SIG</div>
+          <ul class="comp-lista">
+            <li>QGIS</li>
+            <li>Google Earth Pro</li>
+            <li>ArcGIS (básico)</li>
+          </ul>
+        </div>
+        <div class="comp-grupo">
+          <div class="comp-grupo-titulo">Análise Espacial</div>
+          <ul class="comp-lista">
+            <li>Geoprocessamento vetorial</li>
+            <li>Análise de dados raster</li>
+            <li>Cartografia temática</li>
+            <li>Regularização fundiária</li>
+          </ul>
+        </div>
+        <div class="comp-grupo">
+          <div class="comp-grupo-titulo">Dados e Fontes</div>
+          <ul class="comp-lista">
+            <li>SIGEF / SICAR</li>
+            <li>IBGE / SRTM</li>
+            <li>Sensoriamento remoto</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="rodape">
+      <span class="rodape-nome">Paulo André – Técnico em Geoprocessamento</span>
+      <span class="rodape-pg"></span>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       PORTFÓLIO A4 — PROJETO 01 (pg. 4)
+       Duplique esta section para cada projeto
+       ══════════════════════════════════════════════ -->
+  <section class="pagina" data-secao="Projeto 01 – Nome do Projeto">
+    <div class="projeto-header">
+      <div class="projeto-header-label">Projeto 01</div>
+      <div class="projeto-header-titulo">Nome do Projeto</div>
+    </div>
+
+    <div class="projeto-conteudo">
+      <div class="projeto-info">
+
+        <div class="projeto-info-bloco">
+          <div class="projeto-info-label">Objetivo / Contexto</div>
+          <div class="projeto-info-texto">
+            Descreva aqui o objetivo e o contexto do projeto.
+          </div>
+        </div>
+
+        <div class="projeto-info-bloco">
+          <div class="projeto-info-label">Dados / Insumos</div>
+          <div class="projeto-info-texto">
+            <span class="projeto-info-tag">SIGEF</span>
+            <span class="projeto-info-tag">IBGE</span>
+          </div>
+        </div>
+
+        <div class="projeto-info-bloco">
+          <div class="projeto-info-label">Ferramentas</div>
+          <div class="projeto-info-texto">
+            <span class="projeto-info-tag">QGIS</span>
+            <span class="projeto-info-tag">Google Earth Pro</span>
+          </div>
+        </div>
+
+        <div class="projeto-info-bloco">
+          <div class="projeto-info-label">Tipo de Análise</div>
+          <div class="projeto-info-texto">Análise territorial e cartografia temática</div>
+        </div>
+
+        <div class="projeto-info-bloco">
+          <div class="projeto-info-label">Acesse os arquivos do projeto</div>
+          <div class="projeto-info-tag">
+            <a href="https://drive.google.com" target="_blank"
+               style="color:var(--cor-acento); text-decoration:none; font-size:11px;">
+              https://drive.google.com/...
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="projeto-visual">
+        <div class="projeto-metodologia">
+          <div class="metodologia-titulo">Fluxo Metodológico</div>
+          <div class="metodologia-steps">
+            <div class="metodologia-step">
+              <div class="step-num">01</div>
+              <div class="step-texto">Coleta de dados</div>
+            </div>
+            <div class="metodologia-step">
+              <div class="step-num">02</div>
+              <div class="step-texto">Processamento</div>
+            </div>
+            <div class="metodologia-step">
+              <div class="step-num">03</div>
+              <div class="step-texto">Análise espacial</div>
+            </div>
+            <div class="metodologia-step">
+              <div class="step-num">04</div>
+              <div class="step-texto">Produção cartográfica</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Imagem de capa do projeto -->
+        <img
+          src="../../../imagens/projetos/projeto-01/capa.png"
+          alt="Imagem do Projeto 01"
+          class="img-contorno02"
+          style="width:800px; height:520px; object-fit:contain; flex:none; border-radius:8px; border:1px solid var(--cor-linha);"
+        >
+      </div>
+    </div>
+
+    <div class="rodape">
+      <span class="rodape-nome">Paulo André – Técnico em Geoprocessamento</span>
+      <span class="rodape-pg"></span>
+    </div>
+  </section>
+
+  <!-- JS do portfólio A4 (paginação) -->
+  <script src="../../../portfolio/js/navegacao.js"></script>
+  <script>
+    // Numera páginas automaticamente
+    document.addEventListener('DOMContentLoaded', () => {
+      const paginas = document.querySelectorAll('.rodape-pg');
+      const total = paginas.length;
+      paginas.forEach((el, index) => {
+        el.textContent = `${index + 1} / ${total}`;
+      });
+    });
+  </script>
+
+</body>
+</html>

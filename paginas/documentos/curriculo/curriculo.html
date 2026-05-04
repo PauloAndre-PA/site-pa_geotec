@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Currículo | Paulo André</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- CSS do portfólio A4 (mantidos como estavam) -->
+  <link rel="stylesheet" href="../../../portfolio/css/variaveis.css" />
+  <link rel="stylesheet" href="../../../portfolio/css/curriculo-layout.css" />
+  <link rel="stylesheet" href="../../../portfolio/css/print-curriculo.css" />
+
+  <style>
+    body {
+      background: #e8ecf0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 20px;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .curriculo-toolbar {
+      width: 794px;
+      max-width: 100%;
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    .curriculo-toolbar button {
+      padding: 9px 18px;
+      border: none;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      background: #1a3a5c;
+      color: #ffffff;
+      transition: background 0.2s;
+    }
+
+    .curriculo-toolbar button:hover { background: #2e6da4; }
+  </style>
+</head>
+<body>
+
+  <!-- Barra de ações -->
+  <div class="curriculo-toolbar">
+    <button onclick="window.print()">🖨️ Imprimir / Salvar PDF</button>
+    <button onclick="window.history.back()">← Voltar</button>
+  </div>
+
+  <!-- ══════════════════════════════════════════════
+       CURRÍCULO A4 — PÁGINA 1
+       ══════════════════════════════════════════════ -->
+  <section class="curriculo-pagina">
+
+    <!-- Hero -->
+    <div class="curriculo-hero">
+      <div class="curriculo-hero-texto">
+        <h1 class="curriculo-hero-nome">Paulo André</h1>
+        <span class="curriculo-hero-cargo">Técnico em Geoprocessamento</span>
+      </div>
+      <div class="curriculo-hero-direita">
+        <a href="https://seusite.com.br" target="_blank" class="curriculo-hero-site">
+          seusite.com.br
+        </a>
+        <div class="curriculo-hero-tags">
+          <span class="curriculo-hero-tag">QGIS</span>
+          <span class="curriculo-hero-tag">Google Earth Pro</span>
+          <span class="curriculo-hero-tag">Análise Espacial</span>
+          <span class="curriculo-hero-tag">Cartografia</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="conteudo-interno curriculo-conteudo">
+
+      <!-- Perfil -->
+      <div class="secao-header">
+        <span class="secao-titulo-pagina">Perfil Profissional</span>
+        <div class="secao-header-linha"></div>
+      </div>
+
+      <div class="curriculo-resumo">
+        Profissional de geoprocessamento com experiência em análise espacial, produção de mapas
+        temáticos, regularização fundiária e suporte a projetos de infraestrutura e energia.
+        Habilidade em QGIS, Google Earth Pro e organização de dados geoespaciais.
+      </div>
+
+      <!-- Contato -->
+      <div class="secao-header">
+        <span class="secao-titulo-pagina">Contato</span>
+        <div class="secao-header-linha"></div>
+      </div>
+
+      <div class="curriculo-contato-grid">
+        <div class="curriculo-contato-item">
+          <span class="curriculo-contato-label">✉ E-mail</span>
+          <span class="curriculo-contato-valor">pauloandre3707@gmail.com</span>
+        </div>
+        <div class="curriculo-contato-item">
+          <span class="curriculo-contato-label">📱 WhatsApp</span>
+          <a href="https://wa.me/5585999999999" target="_blank" class="curriculo-link">
+            (85) 9 9999-9999
+          </a>
+        </div>
+        <div class="curriculo-contato-item">
+          <span class="curriculo-contato-label">📍 Localização</span>
+          <span class="curriculo-contato-valor">Maracanaú, CE – Brasil</span>
+        </div>
+        <div class="curriculo-contato-item">
+          <span class="curriculo-contato-label">🌐 Site / Portfólio</span>
+          <a href="https://seusite.com.br" target="_blank" class="curriculo-link">
+            seusite.com.br
+          </a>
+        </div>
+        <div class="curriculo-contato-item curriculo-contato-item--largo">
+          <span class="curriculo-contato-label">🔗 LinkedIn</span>
+          <a href="https://www.linkedin.com/in/pauloandre-pageotec" target="_blank" class="curriculo-link">
+            linkedin.com/in/pauloandre-pageotec
+          </a>
+        </div>
+      </div>
+
+      <!-- Experiência -->
+      <div class="secao-header">
+        <span class="secao-titulo-pagina">Experiência Profissional</span>
+        <div class="secao-header-linha"></div>
+      </div>
+
+      <div class="curriculo-exp-container">
+
+        <div class="curriculo-exp-item">
+          <div class="curriculo-exp-lateral">
+            <div class="curriculo-exp-empresa">Nome da Empresa</div>
+            <div class="curriculo-exp-periodo">Jan/2023 – Presente</div>
+            <div class="curriculo-exp-cargos">
+              <span>Técnico em Geoprocessamento</span>
+            </div>
+          </div>
+          <div class="curriculo-exp-conteudo">
+            <p class="curriculo-exp-desc">
+              Descrição geral das atividades e responsabilidades desempenhadas na empresa.
+            </p>
+            <ul class="curriculo-exp-lista">
+              <li>Produção de mapas temáticos e relatórios cartográficos</li>
+              <li>Análise e organização de dados geoespaciais</li>
+              <li>Suporte técnico a projetos de infraestrutura</li>
+              <li>Regularização fundiária e análise territorial</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Adicione mais experiências aqui seguindo o mesmo padrão -->
+
+      </div>
+
+    </div>
+
+    <div class="rodape">
+      <span class="rodape-nome">Paulo André – Técnico em Geoprocessamento</span>
+      <span class="rodape-pg">1 / 2</span>
+    </div>
+
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       CURRÍCULO A4 — PÁGINA 2
+       ══════════════════════════════════════════════ -->
+  <section class="curriculo-pagina">
+
+    <div class="cabecalho-interno">
+      <span class="cabecalho-interno-nome">Paulo André</span>
+      <a href="https://seusite.com.br" target="_blank" class="cabecalho-interno-site">
+        seusite.com.br
+      </a>
+    </div>
+
+    <div class="conteudo-interno curriculo-conteudo">
+
+      <!-- Formação -->
+      <div class="secao-header">
+        <span class="secao-titulo-pagina">Formação Acadêmica</span>
+        <div class="secao-header-linha"></div>
+      </div>
+
+      <div class="formacao-grid">
+        <div class="formacao-item">
+          <div class="formacao-curso">Tecnologia em Geoprocessamento</div>
+          <div class="formacao-inst">Nome da Instituição</div>
+          <div class="formacao-periodo">2020 – 2023</div>
+        </div>
+        <!-- Adicione mais itens aqui -->
+      </div>
+
+      <!-- Cursos -->
+      <div class="secao-header">
+        <span class="secao-titulo-pagina">Cursos Complementares</span>
+        <div class="secao-header-linha"></div>
+      </div>
+
+      <div class="formacao-grid">
+        <div class="formacao-item">
+          <div class="formacao-curso">Nome do Curso</div>
+          <div class="formacao-inst">Plataforma / Instituição</div>
+          <div class="formacao-periodo">2024</div>
+        </div>
+        <!-- Adicione mais itens aqui -->
+      </div>
+
+      <!-- Competências -->
+      <div class="secao-header">
+        <span class="secao-titulo-pagina">Competências Técnicas</span>
+        <div class="secao-header-linha"></div>
+      </div>
+
+      <div class="comp-grid">
+        <div class="comp-grupo">
+          <div class="comp-grupo-titulo">Softwares SIG</div>
+          <ul class="comp-lista">
+            <li>QGIS</li>
+            <li>Google Earth Pro</li>
+            <li>ArcGIS (básico)</li>
+          </ul>
+        </div>
+        <div class="comp-grupo">
+          <div class="comp-grupo-titulo">Análise Espacial</div>
+          <ul class="comp-lista">
+            <li>Geoprocessamento vetorial</li>
+            <li>Análise de dados raster</li>
+            <li>Cartografia temática</li>
+          </ul>
+        </div>
+        <div class="comp-grupo">
+          <div class="comp-grupo-titulo">Dados e Fontes</div>
+          <ul class="comp-lista">
+            <li>SIGEF / SICAR</li>
+            <li>IBGE / SRTM</li>
+            <li>Sensoriamento remoto</li>
+          </ul>
+        </div>
+        <!-- Adicione mais grupos aqui -->
+      </div>
+
+    </div>
+
+    <div class="rodape">
+      <span class="rodape-nome">Paulo André – Técnico em Geoprocessamento</span>
+      <span class="rodape-pg">2 / 2</span>
+    </div>
+
+  </section>
+
+</body>
+</html>

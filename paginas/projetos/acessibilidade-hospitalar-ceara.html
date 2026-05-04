@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projeto 01 — Acessibilidade Hospitalar | PA GeoTec</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../../css/variaveis.css" />
+  <link rel="stylesheet" href="../../css/base.css" />
+  <link rel="stylesheet" href="../../css/layout.css" />
+  <link rel="stylesheet" href="../../css/componentes.css" />
+</head>
+<body>
+
+  <div id="site-header"></div>
+
+  <main class="site-main">
+
+    <!-- ══ HERO ══ -->
+    <section class="hero-section">
+      <div class="container-wide hero-grid">
+        <div class="hero-content">
+          <h1>Análise de Acessibilidade Hospitalar para Atendimento de Emergências</h1>
+          <div class="hero-tags">
+            <span>QGIS</span>
+            <span>Microsoft Excel</span>
+            <span>Google Earth Pro</span>
+            <span>CNES</span>
+            <span>IBGE</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ CONTEÚDO PRINCIPAL ══ -->
+    <div class="layout-content" style="padding: 56px 0 88px;">
+
+      <!-- Número do projeto -->
+      <div class="portfolio-project-number" style="margin-bottom: 8px;">Projeto 01</div>
+
+      <!-- Título interno -->
+      <h2 class="portfolio-project-title" style="margin-bottom: 40px;">
+        Análise de Acessibilidade Hospitalar para Atendimento de Emergências –
+        Estado do Ceará
+      </h2>
+
+      <!-- ── Grade de informações ── -->
+      <div class="portfolio-project-grid" style="margin-bottom: 26px;">
+
+        <div class="portfolio-project-block">
+          <h4>Objetivo / Contexto</h4>
+          <p>
+            Avaliar a acessibilidade espacial aos hospitais habilitados para urgência e
+            emergência no Ceará, considerando deslocamentos de até 1 hora por via terrestre,
+            a fim de identificar possíveis áreas com menor cobertura assistencial.
+          </p>
+        </div>
+
+        <div class="portfolio-project-block">
+          <h4>Tipo de Análise</h4>
+          <p>Análise de acessibilidade por isócrona (1h de deslocamento terrestre)</p>
+        </div>
+
+        <div class="portfolio-project-block">
+          <h4>Dados / Insumos</h4>
+          <div class="portfolio-tag-group">
+            <span class="portfolio-tag-pill">CNES</span>
+            <span class="portfolio-tag-pill">Malha Municipal IBGE</span>
+          </div>
+        </div>
+
+        <div class="portfolio-project-block">
+          <h4>Ferramentas</h4>
+          <div class="portfolio-tag-group">
+            <span class="portfolio-tag-pill">QGIS</span>
+            <span class="portfolio-tag-pill">Microsoft Excel</span>
+            <span class="portfolio-tag-pill">Google Earth Pro</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ── Fluxo Metodológico ── -->
+      <div class="portfolio-project-block" style="margin-bottom: 26px;">
+        <h4>Fluxo Metodológico</h4>
+        <div class="portfolio-method-list">
+          <div class="portfolio-method-step">
+            <span class="portfolio-method-number">01</span>
+            <span class="portfolio-method-text">Coleta e tratamento dos dados do CNES</span>
+          </div>
+          <div class="portfolio-method-step">
+            <span class="portfolio-method-number">02</span>
+            <span class="portfolio-method-text">Filtragem das unidades habilitadas para urgência e emergência</span>
+          </div>
+          <div class="portfolio-method-step">
+            <span class="portfolio-method-number">03</span>
+            <span class="portfolio-method-text">Espacialização no QGIS e geração dos pontos hospitalares</span>
+          </div>
+          <div class="portfolio-method-step">
+            <span class="portfolio-method-number">04</span>
+            <span class="portfolio-method-text">Análise de isócrona – 1h de deslocamento por automóvel</span>
+          </div>
+          <div class="portfolio-method-step">
+            <span class="portfolio-method-number">05</span>
+            <span class="portfolio-method-text">Elaboração do mapa temático de cobertura assistencial</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Arquivos do Projeto ── -->
+      <div class="portfolio-project-block" style="margin-bottom: 40px;">
+        <h4>Arquivos do Projeto</h4>
+        <a
+          class="portfolio-project-link"
+          href="https://drive.google.com/drive/folders/1wXtG_tRdlxh9-T138QKgNW5tuYkl_alA?usp=sharing"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Abrir pasta do projeto no Google Drive
+        </a>
+      </div>
+
+<!-- ── Galeria ── -->
+<div class="article-gallery" data-blog-gallery>
+  <div class="article-gallery-main">
+
+    <button
+      class="article-gallery-arrow article-gallery-arrow-prev"
+      type="button"
+      aria-label="Imagem anterior"
+      data-gallery-prev
+    >‹</button>
+
+    <div class="article-gallery-counter" data-gallery-counter></div>
+
+    <div class="article-gallery-frame">
+      <img src="" alt="" data-gallery-main-image>
+    </div>
+
+    <p class="article-gallery-caption" data-gallery-caption></p>
+
+    <button
+      class="article-gallery-arrow article-gallery-arrow-next"
+      type="button"
+      aria-label="Próxima imagem"
+      data-gallery-next
+    >›</button>
+
+  </div>
+
+  <div class="article-gallery-thumbs">
+
+    <button
+      class="article-gallery-thumb active"
+      type="button"
+      data-gallery-thumb
+      data-full="acessibilidade_hospitalar-ceara/mapa_geral-266x173.png"
+      data-alt="Mapa geral de acessibilidade hospitalar"
+      data-caption="Visão geral do mapa de acessibilidade hospitalar do Estado do Ceará."
+    >
+      <img
+        src="acessibilidade_hospitalar-ceara/mapa_geral-266x173.png"
+        alt="Miniatura mapa geral"
+      >
+    </button>
+
+    <button
+      class="article-gallery-thumb"
+      type="button"
+      data-gallery-thumb
+      data-full="acessibilidade_hospitalar-ceara/mapa_hospital_geral.png"
+      data-alt="Mapa hospitais gerais"
+      data-caption="A análise por isócrona permitiu identificar municípios e regiões do estado com menor cobertura no tempo de 1 hora de deslocamento terrestre, evidenciando lacunas na distribuição espacial das unidades hospitalares habilitadas para urgência e emergência."
+    >
+      <img
+        src="acessibilidade_hospitalar-ceara/mapa_hospital_geral.png"
+        alt="Miniatura hospitais gerais"
+      >
+    </button>
+
+    <button
+      class="article-gallery-thumb"
+      type="button"
+      data-gallery-thumb
+      data-full="acessibilidade_hospitalar-ceara/mapa_hospital_especializado.png"
+      data-alt="Mapa hospitais especializados"
+      data-caption="Distribuição das unidades hospitalares especializadas habilitadas para urgência e emergência no Estado do Ceará."
+    >
+      <img
+        src="acessibilidade_hospitalar-ceara/mapa_hospital_especializado.png"
+        alt="Miniatura hospitais especializados"
+      >
+    </button>
+
+  </div>
+</div>
+<!-- /galeria -->
+
+
+    </div>
+    <!-- /layout-content -->
+
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="../../js/contato-data.js"></script>
+  <script src="../../js/componentes.js"></script>
+  <script src="../../js/conteudo-post.js"></script>
+</body>
+</html>

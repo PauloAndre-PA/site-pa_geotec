@@ -10,43 +10,29 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="css/variaveis.css" />
-  <link rel="stylesheet" href="css/global.css" />
-  <link rel="stylesheet" href="css/home.css" />
-  <link rel="stylesheet" href="css/blog.css" />
-  <link rel="stylesheet" href="css/blog-post.css" />
-  <link rel="stylesheet" href="css/portfolio-web.css" />
-  <link rel="stylesheet" href="css/print.css" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/layout.css" />
+  <link rel="stylesheet" href="css/componentes.css" />
 </head>
 <body>
-  <header class="site-header">
-    <div class="container header-container">
-      <div class="brand">
-        <a href="index.html" class="brand-logo-link" data-tab-link="inicio">
-          <img src="imagens/logo_marca/logo_normal-fundo_transparente.png" alt="PA GeoTec" class="brand-logo">
-        </a>
-      </div>
 
-      <nav class="main-nav">
-        <a href="index.html" class="nav-link nav-link-anchor active" data-tab-link="inicio">Início</a>
-        <a href="blog.html" class="nav-link nav-link-anchor">Blog</a>
-        <a href="index.html#portfolio" class="nav-link nav-link-anchor" data-tab-link="portfolio">Portfólio</a>
-      </nav>
-    </div>
-  </header>
+  <!-- Header injetado via JS -->
+  <div id="site-header"></div>
 
   <main class="site-main">
-    <!-- INÍCIO -->
-    <section id="inicio" class="tab-section active">
-      <section class="hero-section">
-        <div class="container hero-grid">
-          <div class="hero-content">
-            <h1>PA GeoTec <br> Soluções Geoespaciais</h1>
-            <p>
-              A PA GeoTec reúne apresentação profissional, projetos práticos e conteúdos técnicos
-              voltados à cartografia temática, organização de dados espaciais, análise territorial
-              e documentação aplicada a projetos de infraestrutura e energia.
-            </p>
 
+    <!-- ── INÍCIO ── -->
+    <section id="inicio" class="tab-section active">
+
+      <section class="hero-section">
+        <div class="container-wide hero-grid">
+          <div class="hero-content">
+            <h1>Paulo André Ferreira</h1>
+            <p>
+              Sou Paulo André Ferreira, profissional com foco em geoprocessamento, análise espacial 
+              e cartografia aplicada. Criei o site PA GeoTec para compartilhar meu portfólio, projetos, 
+              tutoriais e experiências com QGIS, organização de dados espaciais e documentação técnica voltada a aplicações territoriais.
+            </p>
             <div class="hero-tags">
               <span>QGIS</span>
               <span>Google Earth Pro</span>
@@ -54,125 +40,82 @@
               <span>Cartografia</span>
               <span>Regularização Fundiária</span>
             </div>
+
+            <!-- Botões de Download -->
+            <div class="hero-downloads">
+              <a href="paginas/documentos/curriculo-paulo-andre-ferreira-geoprocessamento.pdf"
+                download="Currículo–Paulo André Ferreira-Geoprocessamento.pdf"
+                class="hero-download-btn hero-download-btn--outline">
+                ⬇ Baixar Currículo
+              </a>
+              <a href="paginas/documentos/portfolio-paulo-andre-ferreira-geoprocessamento.pdf"
+                download="Portfólio–Paulo André Ferreira-Geoprocessamento.pdf"
+                class="hero-download-btn hero-download-btn--outline">
+                ⬇ Baixar Portfólio
+              </a>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <div class="section-divider"></div>
+
+      <section class="section-block">
+        <div class="container-wide">
+          <div class="section-title">
+            <span>Projetos em Destaque</span>
+            <div class="section-line"></div>
+          </div>
+          <p class="page-description">
+            Projetos desenvolvidos em geoprocessamento, análise espacial e cartografia aplicada.
+          </p>
+          <div class="conteudo-grid" id="projetosDestaqueHome"></div>
+          <div class="section-cta">
+            <a href="paginas/projetos.html" class="btn btn-primary">
+              Ver todos os projetos →
+            </a>
           </div>
         </div>
       </section>
 
       <section class="section-block">
-        <div class="container">
+        <div class="container-wide">
           <div class="section-title">
-            <span>Últimos Artigos</span>
+            <span>Últimos Conteúdos</span>
             <div class="section-line"></div>
           </div>
-
           <p class="page-description">
-            Os 4 conteúdos mais recentes publicados sobre geoprocessamento, organização de projetos,
+            Os conteúdos mais recentes publicados sobre geoprocessamento, organização de projetos,
             análise territorial e aplicações práticas no contexto profissional.
           </p>
-
-          <div class="blog-grid" id="ultimosPostsHome"></div>
+          <div class="conteudo-grid" id="ultimosPostsHome"></div>
+          <div class="section-cta">
+            <a href="paginas/conteudos.html" class="btn btn-primary">
+              Ver todos os conteúdos →
+            </a>
+          </div>
         </div>
       </section>
+
+      <!-- ✅ Seção de contato AQUI, dentro do Início -->
+      <div id="contatohome-section-content"></div>
+
     </section>
 
-    <!-- PORTFÓLIO -->
-    <section id="portfolio" class="tab-section">
-      <section class="page-top portfolio-page-top">
-        <div class="portfolio-shell">
-          <section class="portfolio-hero layout-wide">
-            <div class="portfolio-hero-left">
-              <h1 class="portfolio-hero-title">
-                Portfólio
-                <span>Profissional</span>
-              </h1>
-              <p class="portfolio-hero-text">
-                Versão web completa do portfólio profissional, com experiências, formação,
-                competências técnicas e projetos desenvolvidos em geoprocessamento.
-              </p>
-
-              <div class="portfolio-hero-tags">
-                <span>Projetos</span>
-                <span>Experiência</span>
-                <span>Competências</span>
-                <span>Web</span>
-              </div>
-            </div>
-
-            <div class="portfolio-hero-right">
-              <div class="portfolio-hero-links">
-                <a class="portfolio-hero-link" href="portfolio/portfolio-a4.html" target="_blank" rel="noopener noreferrer">
-                  <strong>Portfólio A4</strong>
-                  <span>Abrir apresentação completa em formato paisagem</span>
-                </a>
-
-                <a class="portfolio-hero-link" href="portfolio/curriculo-a4.html" target="_blank" rel="noopener noreferrer">
-                  <strong>Currículo A4</strong>
-                  <span>Abrir currículo profissional em formato imprimível</span>
-                </a>
-              </div>
-
-              <div class="portfolio-hero-update">ABR/2026</div>
-            </div>
-          </section>
-
-          <div id="portfolioWebContent" class="portfolio-web-flow"></div>
-        </div>
-      </section>
-    </section>
   </main>
 
-  <footer class="site-footer">
-    <div class="container footer-grid">
-      <div class="footer-column footer-column-main">
-        <h2 class="footer-title">Paulo André</h2>
-        <p class="footer-text">
-          Geoprocessamento, análise espacial e cartografia aplicada.
-        </p>
-        <p class="footer-text">
-          Aqui reúno meu portfólio, projetos e conteúdos profissionais.
-        </p>
-      </div>
+  <!-- Footer injetado via JS -->
+  <div id="site-footer"></div>
 
-      <div class="footer-column">
-        <h3 class="footer-heading">Navegação</h3>
-        <nav class="footer-nav">
-          <a class="footer-contact-link" href="index.html" data-tab-link="inicio">Início</a>
-          <a class="footer-contact-link" href="blog.html">Blog</a>
-          <a class="footer-contact-link" href="index.html#portfolio" data-tab-link="portfolio">Portfólio</a>
-        </nav>
-      </div>
-
-      <div class="footer-column">
-        <h3 class="footer-heading">Contato</h3>
-        <div class="footer-info-list">
-          <a class="footer-contact-link" href="mailto:pauloandre3707@gmail.com">pauloandre3707@gmail.com</a>
-          <span class="footer-info-text">Maracanaú, CE – Brasil</span>
-        </div>
-      </div>
-
-      <div class="footer-column">
-        <h3 class="footer-heading">Social</h3>
-        <div class="footer-info-list">
-          <a
-            class="footer-contact-link"
-            href="https://www.linkedin.com/in/pauloandre-pageotec"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            LinkedIn
-          </a>
-        </div>
-      </div>
-    </div>
-
-    <div class="container footer-bottom">
-      <p class="footer-bottom-text">© 2026 Paulo André — Site pessoal e portfólio profissional.</p>
-    </div>
-  </footer>
-
-  <script src="js/blog-data.js"></script>
-  <script src="js/render-home-blog.js"></script>
-  <script src="js/main.js"></script>
+  <script src="js/contato-data.js"></script>
+  <script src="js/componentes.js"></script>
+  <script src="js/conteudos-data.js"></script>
+  <script src="js/projetos-data.js"></script>
+  <script src="js/render-home-conteudos.js"></script>
+  <script src="js/render-home-projetos.js"></script>
   <script src="js/render-portfolio-web.js"></script>
+  <script src="js/render-contato.js"></script>
+  <script src="js/main.js"></script>
 </body>
 </html>

@@ -1,0 +1,133 @@
+/* =====================================================
+   BASE — Reset, tipografia e utilitários
+   ===================================================== */
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  min-height: 100%;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Inter', sans-serif;
+  color: var(--cor-texto);
+  background:
+    radial-gradient(circle at top left, rgba(74,159,212,0.10), transparent 28%),
+    linear-gradient(180deg, #f3f7fb 0%, #e6edf5 100%);
+  overflow-x: hidden;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* ── Utilitários ── */
+/* ── Container padrão (subpáginas com sidebar) ── */
+.container {
+  width: min(calc(100% - 48px), var(--largura-container-page));
+  margin: 0 auto;
+}
+
+/* ── Container wide (Home, Projetos, Conteúdos, Sobre) ── */
+.container-wide {
+  width: min(calc(100% - 48px), var(--largura-container-wide));
+  margin: 0 auto;
+}
+
+.section-block,
+.page-top {
+  padding: 42px 0 56px;
+}
+
+.section-block + .section-block {
+  padding-top: 0;
+}
+
+.section-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.section-title span {
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--cor-secundaria);
+}
+
+.section-line {
+  flex: 1;
+  height: 1px;
+  background: var(--cor-linha);
+}
+
+.page-description {
+  max-width: 100%;
+  font-size: 15px;
+  line-height: 1.8;
+  color: var(--cor-texto-claro);
+  margin-bottom: 26px;
+}
+
+/* ── Botões ── */
+.btn {
+  border: none;
+  border-radius: 12px;
+  padding: 12px 18px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+}
+
+.btn-primary {
+  background: var(--cor-primaria);
+  color: var(--cor-branco);
+  box-shadow: var(--sombra-suave);
+}
+
+.btn-secondary {
+  background: rgba(255,255,255,0.08);
+  color: var(--cor-branco);
+  border: 1px solid rgba(255,255,255,0.25);
+}
+
+/* ── Tab sections (index) ── */
+.tab-section {
+  display: none;
+}
+
+.tab-section.active {
+  display: block;
+}
+
+/* ── Print básico ── */
+@media print {
+  body { background: white; }
+  .site-header { display: none !important; }
+}

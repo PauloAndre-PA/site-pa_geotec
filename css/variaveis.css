@@ -1,16 +1,30 @@
-:root {
-  --cor-primaria: #1a3a5c;
-  --cor-secundaria: #2e6da4;
-  --cor-acento: #4a9fd4;
-  --cor-claro: #e8f4fd;
-  --cor-cinza: #f5f6f8;
-  --cor-texto: #2c3e50;
-  --cor-texto-claro: #6b7c93;
-  --cor-branco: #ffffff;
-  --cor-linha: #dce3ea;
+/* =====================================================
+   VARIÁVEIS GLOBAIS — PA GeoTec
+   ===================================================== */
 
-  --largura-container: 1240px;
+:root {
+  /* Cores principais */
+  --cor-primaria:      #104E8B;
+  --cor-secundaria:    #4682B4;
+  --cor-acento:        #4a9fd4;
+  --cor-claro:         #e8f4fd;
+  --cor-cinza:         #f5f6f8;
+  --cor-texto:         #2c3e50;
+  --cor-texto-claro:   #6b7c93;
+  --cor-branco:        #ffffff;
+  --cor-linha:         #dce3ea;
+  --cor-divisor:       rgba(0, 0, 0, 0.18);
+
+  /* Layout */
+  --largura-container:      1240px;  /* manter como fallback */
+  --largura-container-wide: 1440px;  /* páginas sem sidebar (Home, Projetos, Conteúdos, Sobre) */
+  --largura-container-page: 1200px;  /* subpáginas COM sidebar */
   --raio: 14px;
+
+  /* Sombras */
   --sombra-suave: 0 10px 30px rgba(26, 58, 92, 0.08);
   --sombra-media: 0 16px 40px rgba(26, 58, 92, 0.12);
+
+  /* Hero padrão (gradient usado em todas as páginas) */
+  --hero-bg: linear-gradient(135deg, rgba(22,55,84,0.98), rgba(47,121,173,0.94));
 }
