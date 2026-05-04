@@ -7,7 +7,7 @@ function criarCardPost(post) {
     <a href="${post.link}" class="post-card post-card-link">
       ${post.imagem ? `
         <div class="post-card-img-wrap">
-          <img src="${post.imagem}" alt="${post.titulo}" class="post-card-img" loading="lazy">
+          <img src="${post.imagem}" alt="${post.titulo}" class="post-card-img" loading="lazy" width="640" height="360">
         </div>
       ` : ''}
       <div class="post-card-body">

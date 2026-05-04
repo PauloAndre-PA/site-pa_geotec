@@ -7,7 +7,7 @@ function criarCardProjeto(projeto) {
     <a href="${projeto.link}" class="post-card post-card-link">
       ${projeto.imagem ? `
         <div class="post-card-img-wrap">
-          <img src="${projeto.imagem}" alt="${projeto.titulo}" class="post-card-img" loading="lazy">
+          <img src="${projeto.imagem}" alt="${projeto.titulo}" class="post-card-img" loading="lazy" width="640" height="360">
         </div>
       ` : ''}
       <div class="post-card-body">
