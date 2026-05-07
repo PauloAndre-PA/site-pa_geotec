@@ -121,6 +121,26 @@ function renderFooter(root) {
   `;
 }
 
+// ── Injeta Favicon ──
+function injetarFavicon(root) {
+  const favicons = [
+    { rel: 'icon',             type: 'image/x-icon', href: `${root}favicon.ico`                                        },
+    { rel: 'icon',             type: 'image/png',    href: `${root}imagens/favicon/favicon-32x32.png`, sizes: '32x32'  },
+    { rel: 'icon',             type: 'image/png',    href: `${root}imagens/favicon/favicon-16x16.png`, sizes: '16x16'  },
+    { rel: 'apple-touch-icon', type: null,           href: `${root}imagens/favicon/apple-touch-icon.png`, sizes: '180x180' },
+    { rel: 'manifest',         type: null,           href: `${root}site.webmanifest`                                   },
+  ];
+
+  favicons.forEach(({ rel, type, sizes, href }) => {
+    const link = document.createElement('link');
+    link.rel  = rel;
+    link.href = href;
+    if (type)  link.type  = type;
+    if (sizes) link.sizes = sizes;
+    document.head.appendChild(link);
+  });
+}
+
 // ── Injeta tudo no DOM ──
 document.addEventListener('DOMContentLoaded', () => {
   const root       = getRootPath();
@@ -137,4 +157,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (footerEl) {
     footerEl.outerHTML = renderFooter(root);
   }
+
+  // Injeta favicon
+  injetarFavicon(root);
 });
